@@ -3,10 +3,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import proyecto.backend.service.empleadoServiceImpl;
+import proyecto.backend.DTO.empleadoDTO;
 
 import java.util.List;
 import java.util.Optional;
-import proyecto.backend.entity.empleado;
 
 @RestController
 @RequestMapping("/api/empleados")
@@ -16,45 +16,45 @@ public class empleadoController {
     private empleadoServiceImpl empleadoService;
 
     @GetMapping("/getAll")
-    public List<empleado> getAllEmpleados() {
+    public List<empleadoDTO> getAllempleadoDTOs() {
         return empleadoService.findAll();
     }
 
     @GetMapping("/SearchByID/{id}")
-    public ResponseEntity<empleado> getEmpleadoById(@PathVariable Long id) {
-        Optional<empleado> Empleado = empleadoService.findById(id);
-        return Empleado.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<empleadoDTO> getempleadoDTOById(@PathVariable Long id) {
+        Optional<empleadoDTO> EmpleadoDTO = empleadoService.findById(id);
+        return EmpleadoDTO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/create")
-    public empleado createEmpleado(@RequestBody empleado Empleado) {
-        return empleadoService.save(Empleado);
+    public empleadoDTO createempleadoDTO(@RequestBody empleadoDTO EmpleadoDTO) {
+        return empleadoService.save(EmpleadoDTO);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<empleado> updateEmpleado(@PathVariable Long id, @RequestBody empleado empleadoDetalles) {
-        Optional<empleado> optionalEmpleado = empleadoService.findById(id);
-        if (optionalEmpleado.isPresent()) {
-            empleado Empleado = optionalEmpleado.get();
-            Empleado.setNombre(empleadoDetalles.getNombre());
-            Empleado.setApellidoPaterno(empleadoDetalles.getApellidoPaterno());
-            Empleado.setApellidoMaterno(empleadoDetalles.getApellidoMaterno());
-            Empleado.setTipoCargo(empleadoDetalles.getTipoCargo());
-            Empleado.setSueldoBruto(empleadoDetalles.getSueldoBruto());
-            Empleado.setFechaIngreso(empleadoDetalles.getFechaIngreso());
-            Empleado.setTipoContrato(empleadoDetalles.getTipoContrato());
-            Empleado.setSueldoConBono(empleadoDetalles.getSueldoConBono());
-            empleado updatedEmpleado = empleadoService.save(Empleado);
-            return ResponseEntity.ok(updatedEmpleado);
+    public ResponseEntity<empleadoDTO> updateempleadoDTO(@PathVariable Long id, @RequestBody empleadoDTO EmpleadoDTODetalles) {
+        Optional<empleadoDTO> optionalempleadoDTO = empleadoService.findById(id);
+        if (optionalempleadoDTO.isPresent()) {
+            empleadoDTO EmpleadoDTO = optionalempleadoDTO.get();
+            EmpleadoDTO.setNombre(EmpleadoDTODetalles.getNombre());
+            EmpleadoDTO.setApellidoPaterno(EmpleadoDTODetalles.getApellidoPaterno());
+            EmpleadoDTO.setApellidoMaterno(EmpleadoDTODetalles.getApellidoMaterno());
+            EmpleadoDTO.setTipoCargo(EmpleadoDTODetalles.getTipoCargo());
+            EmpleadoDTO.setSueldoBruto(EmpleadoDTODetalles.getSueldoBruto());
+            EmpleadoDTO.setFechaIngreso(EmpleadoDTODetalles.getFechaIngreso());
+            EmpleadoDTO.setTipoContrato(EmpleadoDTODetalles.getTipoContrato());
+            EmpleadoDTO.setSueldoConBono(EmpleadoDTODetalles.getSueldoConBono());
+            empleadoDTO updatedempleadoDTO = empleadoService.save(EmpleadoDTO);
+            return ResponseEntity.ok(updatedempleadoDTO);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteEmpleado(@PathVariable Long id) {
-        Optional<empleado> Empleado = empleadoService.findById(id);
-        if (Empleado.isPresent()) {
+    public ResponseEntity<Void> deleteempleadoDTO(@PathVariable Long id) {
+        Optional<empleadoDTO> EmpleadoDTO = empleadoService.findById(id);
+        if (EmpleadoDTO.isPresent()) {
             empleadoService.deleteById(id);
             return ResponseEntity.noContent().build();
         } else {
@@ -63,8 +63,8 @@ public class empleadoController {
     }
     /*
     @PostMapping("/asociarProyecto")
-    public ResponseEntity<Void> asociarEmpleadoAProyecto(@RequestBody AsociarEmpleadoProyectoDTO dto) {
-        empleadoService.asociarEmpleadoAProyecto(dto.getEmpleadoId(), dto.getProyectoId());
+    public ResponseEntity<Void> asociarempleadoDTOAProyecto(@RequestBody AsociarempleadoDTOProyectoDTO dto) {
+        empleadoService.asociarempleadoDTOAProyecto(dto.getempleadoDTOId(), dto.getProyectoId());
         return new ResponseEntity<>(HttpStatus.OK);
     }*/
 

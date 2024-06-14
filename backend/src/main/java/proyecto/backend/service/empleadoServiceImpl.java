@@ -1,11 +1,12 @@
 package proyecto.backend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import proyecto.backend.entity.empleado;
-import proyecto.backend.entity.proyecto;
+import proyecto.backend.DTO.empleadoDTO;
 import proyecto.backend.repository.empleadoRepository;
-import proyecto.backend.repository.proyectoRepository;
+import proyecto.backend.entity.empleado;
 
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,34 +15,31 @@ public class empleadoServiceImpl implements IempleadoService{
 
     @Autowired
     private empleadoRepository EmpleadoRepository;
-    private proyectoRepository ProyectoRepository;
 
-    public List<empleado> findAll() {
-        return EmpleadoRepository.findAll();
+    public List<empleadoDTO> findAll() {
+        List<empleado> TodosLosEmpleados = (List<empleado>) EmpleadoRepository.findAll();
+        List<empleadoDTO> listDto = new ArrayList<empleadoDTO>();
+        for (empleado l : TodosLosEmpleados) {
+            listDto.add(l.toDTO());
+        }
+        return listDto;
     }
 
-    public Optional<empleado> findById(Long id) {
-        return EmpleadoRepository.findById(id);
+    public Optional<empleadoDTO> findById(Long id) {
+        Optional<empleado> BuscarPorID = EmpleadoRepository.findById(id);
+        empleado DevolverEmpleado = BuscarPorID.get();
+        empleadoDTO dto = DevolverEmpleado.toDTO();
+        return Optional.ofNullable(dto);
     }
 
-    public empleado save(empleado empleado) {
-        return EmpleadoRepository.save(empleado);
+    public empleadoDTO save(empleadoDTO Empleadodto) {
+        empleado GuardarEmpleado = EmpleadoRepository.save(Empleadodto.toEntity()); //Convertir empleadoDTO a empleado con el metodo toEntity
+        return GuardarEmpleado.toDTO(); // Se devuelve convirtiendo el empleado a DTO
     }
 
-    public void deleteById(Long id) {
-        EmpleadoRepository.deleteById(id);
+    public void deleteById(Long Id) {
+        EmpleadoRepository.deleteById(Id);
     }
-    /*
-    public void asociarEmpleadoAProyecto(Long empleadoId, Long proyectoId) {
-        empleado Empleado = EmpleadoRepository.findById(empleadoId)
-                .orElseThrow(() -> new ResourceNotFoundException("Empleado not found with id " + empleadoId));
-        proyecto Proyecto = ProyectoRepository.findById(proyectoId)
-                .orElseThrow(() -> new ResourceNotFoundException("Proyecto not found with id " + proyectoId));
 
-        Empleado.getProyectos().add(Proyecto);
-        Proyecto.getEmpleados().add(Empleado);
 
-        EmpleadoRepository.save(Empleado);
-        ProyectoRepository.save(Proyecto);
-    }*/
 }
