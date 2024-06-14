@@ -20,8 +20,8 @@ public class registro {
     private Long id;
 
     private LocalDate fechaPago;
-    private String Recibe_bono;
-    private double monto_bono;
+    private String RecibeBono;
+    private double montoBono;
     private String porcentaje;
     private String estado;
 
