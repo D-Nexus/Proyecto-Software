@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/registro")
+@RequestMapping("/api/registros")
 public class registroController {
 
     @Autowired
@@ -21,7 +21,7 @@ public class registroController {
         return registroService.findAll();
     }
 
-    @GetMapping("/searchById/{id}")
+    @GetMapping("/SearchById/{id}")
     public ResponseEntity<registro> getRegistroById(@PathVariable Long id) {
         Optional<registro> Registro = registroService.findById(id);
         return  Registro.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
@@ -38,8 +38,8 @@ public class registroController {
         if (optionalRegistro.isPresent()) {
             registro Registro = optionalRegistro.get();
             Registro.setFechaPago(registroDetalles.getFechaPago());
-            Registro.setRecibe_bono(registroDetalles.getRecibe_bono());
-            Registro.setMonto_bono(registroDetalles.getMonto_bono());
+            Registro.setRecibeBono(registroDetalles.getRecibeBono());
+            Registro.setMontoBono(registroDetalles.getMontoBono());
             Registro.setPorcentaje(registroDetalles.getPorcentaje());
             Registro.setEstado(registroDetalles.getEstado());
             Registro.setEmpleado(registroDetalles.getEmpleado());
