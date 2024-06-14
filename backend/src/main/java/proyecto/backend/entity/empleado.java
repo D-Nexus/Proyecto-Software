@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import proyecto.backend.DTO.empleadoDTO;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -33,4 +34,18 @@ public class empleado {
     @OneToMany(mappedBy = "empleado")
     @JsonIgnore
     private Set<registro> registros;
+
+    public empleadoDTO toDTO(){
+        empleadoDTO empleadoDTO = new empleadoDTO();
+        empleadoDTO.setId(id);
+        empleadoDTO.setNombre(nombre);
+        empleadoDTO.setFechaIngreso(fechaIngreso);
+        empleadoDTO.setSueldoBruto(sueldoBruto);
+        empleadoDTO.setApellidoPaterno(apellidoPaterno);
+        empleadoDTO.setApellidoMaterno(apellidoMaterno);
+        empleadoDTO.setTipoCargo(tipoCargo);
+        empleadoDTO.setTipoContrato(tipoContrato);
+        empleadoDTO.setSueldoConBono(sueldoConBono);
+        return empleadoDTO;
+    }
 }
