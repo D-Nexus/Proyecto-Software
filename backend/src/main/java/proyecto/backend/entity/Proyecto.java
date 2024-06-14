@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Data
@@ -24,9 +24,11 @@ public class Proyecto {
     private String comuna;
     private Integer cantEmpleados;
     private String estado;
+    private LocalDate fechaInicio;
+    private LocalDate fechaTerminoPactada;
+    private LocalDate fechaTerminoReal;
 
-
-    @Temporal(TemporalType.DATE) //Anotación para la utilización de las fechas
+    /*@Temporal(TemporalType.DATE) //Anotación para la utilización de las fechas
     private Date fechaInicio;
 
     @Temporal(TemporalType.DATE)
@@ -34,6 +36,7 @@ public class Proyecto {
 
     @Temporal(TemporalType.DATE)
     private Date fechaTerminoReal;
+    */
 
     @OneToMany(mappedBy = "proyecto") //Relación unidirecional de 1 a n.
     @JsonIgnore

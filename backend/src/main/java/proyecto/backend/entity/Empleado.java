@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Data
@@ -28,10 +28,10 @@ public class Empleado {
     private String tipoCargo;
     private Double sueldoBruto;
     private String tipoContrato;
+    private LocalDate fechaIngreso;
 
-    @Temporal(TemporalType.DATE) //Anotación para la utilización de las fechas
-    private Date fechaIngreso;
-
+    /*@Temporal(TemporalType.DATE) //Anotación para la utilización de las fechas
+    private Date fechaIngreso; */
 
     @OneToMany(mappedBy = "empleado") //Relación unidirecional de 1 a n.
     @JsonIgnore
