@@ -1,30 +1,27 @@
 package proyecto.backend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import proyecto.backend.entity.empleado;
-import proyecto.backend.entity.proyecto;
-import proyecto.backend.repository.empleadoRepository;
-import proyecto.backend.repository.proyectoRepository;
+import proyecto.backend.entity.Empleado;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class empleadoServiceImpl implements IempleadoService{
+public class EmpleadoServiceImpl implements IEmpleadoService {
 
     @Autowired
-    private empleadoRepository EmpleadoRepository;
-    private proyectoRepository ProyectoRepository;
+    private proyecto.backend.repository.EmpleadoRepository EmpleadoRepository;
+    private proyecto.backend.repository.ProyectoRepository ProyectoRepository;
 
-    public List<empleado> findAll() {
+    public List<Empleado> findAll() {
         return EmpleadoRepository.findAll();
     }
 
-    public Optional<empleado> findById(Long id) {
+    public Optional<Empleado> findById(Long id) {
         return EmpleadoRepository.findById(id);
     }
 
-    public empleado save(empleado empleado) {
+    public Empleado save(Empleado empleado) {
         return EmpleadoRepository.save(empleado);
     }
 

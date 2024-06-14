@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name= "registros")
-public class registro {
+public class Registro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,11 +29,11 @@ public class registro {
     @ManyToOne
     @JoinColumn(name = "id_empleado")
     @JsonIgnore
-    private empleado empleado;
+    private Empleado empleado;
 
     @ManyToOne
     @JoinColumn(name = "id_proyecto")
     @JsonIgnore
-    private proyecto proyecto;
+    private Proyecto proyecto;
 
 }

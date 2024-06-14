@@ -4,27 +4,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
-import proyecto.backend.entity.proyecto;
-import proyecto.backend.repository.proyectoRepository;
+import proyecto.backend.entity.Proyecto;
 
 @Service
-public class proyectoServiceImpl implements IproyectoService {
+public class ProyectoServiceImpl implements IProyectoService {
 
     @Autowired
-    private proyectoRepository ProyectoRepository;
+    private proyecto.backend.repository.ProyectoRepository ProyectoRepository;
 
     @Override
-    public List<proyecto> findAll() {
+    public List<Proyecto> findAll() {
         return ProyectoRepository.findAll();
     }
 
     @Override
-    public Optional<proyecto> findById(Long id) {
+    public Optional<Proyecto> findById(Long id) {
         return ProyectoRepository.findById(id);
     }
 
     @Override
-    public proyecto save(proyecto Proyecto) {
+    public Proyecto save(Proyecto Proyecto) {
         return ProyectoRepository.save(Proyecto);
     }
 

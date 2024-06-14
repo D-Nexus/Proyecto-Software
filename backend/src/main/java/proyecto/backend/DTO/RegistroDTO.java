@@ -1,15 +1,12 @@
 package proyecto.backend.DTO;
 
 import lombok.Data;
-import proyecto.backend.entity.registro;
-import proyecto.backend.entity.proyecto;
-import proyecto.backend.entity.empleado;
+import proyecto.backend.entity.Registro;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
-public class registroDTO {
+public class RegistroDTO {
 
     private Long id;
     private LocalDate fechaPago;
@@ -17,11 +14,11 @@ public class registroDTO {
     private Double montoBono;
     private String porcentaje;
     private String estado;
-    private empleadoDTO empleado;
-    private proyectoDTO proyecto;
+    private EmpleadoDTO empleado;
+    private ProyectoDTO proyecto;
 
-    public registro toEntity() {
-        registro r = new registro();
+    public Registro toEntity() {
+        Registro r = new Registro();
         r.setId(this.getId());
         r.setFechaPago(this.getFechaPago());
         r.setRecibeBono(this.getRecibeBono());

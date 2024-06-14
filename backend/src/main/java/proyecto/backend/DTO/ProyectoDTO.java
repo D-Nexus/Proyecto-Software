@@ -3,11 +3,11 @@ package proyecto.backend.DTO;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.Date;
-import proyecto.backend.entity.proyecto;
+
+import proyecto.backend.entity.Proyecto;
 
 @Data
-public class proyectoDTO {
+public class ProyectoDTO {
 
     private Long id;
     private String nombreProyecto;
@@ -18,8 +18,8 @@ public class proyectoDTO {
     private String comuna;
     private Integer cantEmpleados;
 
-    public proyecto toEntity() {
-        proyecto p = new proyecto();
+    public Proyecto toEntity() {
+        Proyecto p = new Proyecto();
         p.setId(this.getId());
         p.setNombreProyecto(this.getNombreProyecto());
         p.setFechaInicio(this.getFechaInicio());

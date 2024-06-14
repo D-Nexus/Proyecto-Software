@@ -4,27 +4,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
-import proyecto.backend.entity.registro;
-import proyecto.backend.repository.registroRepository;
+import proyecto.backend.entity.Registro;
+import proyecto.backend.repository.RegistroRepository;
 
 @Service
-public class registroServiceImpl implements IregistroService {
+public class RegistroServiceImpl implements IRegistroService {
 
     @Autowired
-    private registroRepository registroRepository;
+    private RegistroRepository registroRepository;
 
     @Override
-    public List<registro> findAll() {
+    public List<Registro> findAll() {
         return registroRepository.findAll();
     }
 
     @Override
-    public Optional<registro> findById(Long id) {
+    public Optional<Registro> findById(Long id) {
         return registroRepository.findById(id);
     }
 
     @Override
-    public registro save(registro Registro) {
+    public Registro save(Registro Registro) {
         return registroRepository.save(Registro);
     }
 

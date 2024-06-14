@@ -3,40 +3,40 @@ package proyecto.backend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import proyecto.backend.service.proyectoServiceImpl;
-import proyecto.backend.entity.proyecto;
+import proyecto.backend.service.ProyectoServiceImpl;
+import proyecto.backend.entity.Proyecto;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/proyectos")
-public class proyectoController {
+public class ProyectoController {
 
     @Autowired
-    private proyectoServiceImpl proyectoService;
+    private ProyectoServiceImpl proyectoService;
 
     @GetMapping("/getAll")
-    public List<proyecto> getAllProyectos() {
+    public List<Proyecto> getAllProyectos() {
         return proyectoService.findAll();
     }
 
     @GetMapping("/searchById/{id}")
-    public ResponseEntity<proyecto> getProyectoById(@PathVariable Long id) {
-        Optional<proyecto> Proyecto = proyectoService.findById(id);
+    public ResponseEntity<Proyecto> getProyectoById(@PathVariable Long id) {
+        Optional<Proyecto> Proyecto = proyectoService.findById(id);
         return Proyecto.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/create")
-    public proyecto createProyecto(@RequestBody proyecto Proyecto) {
+    public Proyecto createProyecto(@RequestBody Proyecto Proyecto) {
         return proyectoService.save(Proyecto);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<proyecto> updateProyecto(@PathVariable Long id, @RequestBody proyecto proyectoDetalles) {
-        Optional<proyecto> optionalProyecto = proyectoService.findById(id);
+    public ResponseEntity<Proyecto> updateProyecto(@PathVariable Long id, @RequestBody Proyecto proyectoDetalles) {
+        Optional<Proyecto> optionalProyecto = proyectoService.findById(id);
         if (optionalProyecto.isPresent()) {
-            proyecto Proyecto = optionalProyecto.get();
+            Proyecto Proyecto = optionalProyecto.get();
             Proyecto.setNombreProyecto(proyectoDetalles.getNombreProyecto());
             Proyecto.setFechaInicio(proyectoDetalles.getFechaInicio());
             Proyecto.setFechaTerminoPactada(proyectoDetalles.getFechaTerminoPactada());
@@ -44,7 +44,7 @@ public class proyectoController {
             Proyecto.setEstado(proyectoDetalles.getEstado());
             Proyecto.setComuna(proyectoDetalles.getComuna());
             Proyecto.setCantEmpleados(proyectoDetalles.getCantEmpleados());
-            proyecto updatedProyecto = proyectoService.save(Proyecto);
+            proyecto.backend.entity.Proyecto updatedProyecto = proyectoService.save(Proyecto);
             return ResponseEntity.ok(updatedProyecto);
         } else {
             return ResponseEntity.notFound().build();
@@ -53,7 +53,7 @@ public class proyectoController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteProyecto(@PathVariable Long id) {
-        Optional<proyecto> Proyecto = proyectoService.findById(id);
+        Optional<Proyecto> Proyecto = proyectoService.findById(id);
         if (Proyecto.isPresent()) {
             proyectoService.deleteById(id);
             return ResponseEntity.noContent().build();

@@ -1,12 +1,11 @@
 package proyecto.backend.DTO;
 import lombok.Data;
-import proyecto.backend.entity.empleado;
+import proyecto.backend.entity.Empleado;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
-public class empleadoDTO {
+public class EmpleadoDTO {
 
     private Long id;
     private String nombre;
@@ -18,17 +17,16 @@ public class empleadoDTO {
     private String tipoContrato;
     private Double sueldoConBono;
 
-    public empleado toEntity() {
-        empleado e = new empleado();
+    public Empleado toEntity() {
+        Empleado e = new Empleado();
         e.setId(this.getId());
         e.setNombre(this.getNombre());
         e.setFechaIngreso(this.getFechaIngreso());
         e.setSueldoBruto(this.getSueldoBruto());
-        e.setApellidoPaterno(this.getApellidoPaterno());
-        e.setApellidoMaterno(this.getApellidoMaterno());
+        e.setApellidoPat(this.getApellidoPaterno());
+        e.setApellidoMat(this.getApellidoMaterno());
         e.setTipoCargo(this.getTipoCargo());
         e.setTipoContrato(this.getTipoContrato());
-        e.setSueldoConBono(this.getSueldoConBono());
         return e;
     }
 }
