@@ -37,11 +37,11 @@ public class registroController {
         Optional<registro> optionalRegistro = registroService.findById(id);
         if (optionalRegistro.isPresent()) {
             registro Registro = optionalRegistro.get();
-            Registro.setFechaPago(registroDetalles.getFechaPago());
             Registro.setRecibeBono(registroDetalles.getRecibeBono());
-            Registro.setMontoBono(registroDetalles.getMontoBono());
             Registro.setPorcentaje(registroDetalles.getPorcentaje());
+            Registro.setMontoBono(registroDetalles.getMontoBono());
             Registro.setEstado(registroDetalles.getEstado());
+            Registro.setFechaPago(registroDetalles.getFechaPago());
             Registro.setEmpleado(registroDetalles.getEmpleado());
             Registro.setProyecto(registroDetalles.getProyecto());
             registro updatedRegistro = registroService.save(Registro);

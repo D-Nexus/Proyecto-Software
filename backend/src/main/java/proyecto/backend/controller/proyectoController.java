@@ -3,49 +3,49 @@ package proyecto.backend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import proyecto.backend.service.proyectoServiceImpl;
-import proyecto.backend.entity.proyecto;
+import proyecto.backend.DTO.proyectoDTO;
+import proyecto.backend.service.IproyectoService;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/proyectos")
+@RequestMapping("/api/proyectos") //Centraliza los End-Point con el /api/proyectos Ejemplo url: localhost:8080/api/proyectos/getAll
 public class proyectoController {
 
     @Autowired
-    private proyectoServiceImpl proyectoService;
+    private IproyectoService proyectoService;
 
-    @GetMapping("/getAll")
-    public List<proyecto> getAllProyectos() {
+    @GetMapping("/getAll") //End-point
+    public List<proyectoDTO> getAllProyectosDTOs() {
         return proyectoService.findAll();
     }
 
     @GetMapping("/searchById/{id}")
-    public ResponseEntity<proyecto> getProyectoById(@PathVariable Long id) {
-        Optional<proyecto> Proyecto = proyectoService.findById(id);
-        return Proyecto.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<proyectoDTO> getProyectoDTOById(@PathVariable Long id) {
+        Optional<proyectoDTO> proyectoDTO = proyectoService.findById(id);
+        return proyectoDTO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/create")
-    public proyecto createProyecto(@RequestBody proyecto Proyecto) {
-        return proyectoService.save(Proyecto);
+    public proyectoDTO createProyectoDTO(@RequestBody proyectoDTO proyectoDTO) {
+        return proyectoService.save(proyectoDTO);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<proyecto> updateProyecto(@PathVariable Long id, @RequestBody proyecto proyectoDetalles) {
-        Optional<proyecto> optionalProyecto = proyectoService.findById(id);
-        if (optionalProyecto.isPresent()) {
-            proyecto Proyecto = optionalProyecto.get();
-            Proyecto.setNombreProyecto(proyectoDetalles.getNombreProyecto());
-            Proyecto.setFechaInicio(proyectoDetalles.getFechaInicio());
-            Proyecto.setFechaTerminoPactada(proyectoDetalles.getFechaTerminoPactada());
-            Proyecto.setFechaTerminoReal(proyectoDetalles.getFechaTerminoReal());
-            Proyecto.setEstado(proyectoDetalles.getEstado());
-            Proyecto.setComuna(proyectoDetalles.getComuna());
-            Proyecto.setCantEmpleados(proyectoDetalles.getCantEmpleados());
-            proyecto updatedProyecto = proyectoService.save(Proyecto);
-            return ResponseEntity.ok(updatedProyecto);
+    public ResponseEntity<proyectoDTO> updateProyectoDTO(@PathVariable Long id, @RequestBody proyectoDTO proyectoDTODetalles) {
+        Optional<proyectoDTO> optionalProyectoDTO = proyectoService.findById(id);
+        if (optionalProyectoDTO.isPresent()) {
+            proyectoDTO proyectoDTO = optionalProyectoDTO.get();
+            proyectoDTO.setNombreProyecto(proyectoDTODetalles.getNombreProyecto());
+            proyectoDTO.setComuna(proyectoDTODetalles.getComuna());
+            proyectoDTO.setCantEmpleados(proyectoDTODetalles.getCantEmpleados());
+            proyectoDTO.setFechaInicio(proyectoDTODetalles.getFechaInicio());
+            proyectoDTO.setFechaTerminoPactada(proyectoDTODetalles.getFechaTerminoPactada());
+            proyectoDTO.setFechaTerminoReal(proyectoDTODetalles.getFechaTerminoReal());
+            proyectoDTO.setEstado(proyectoDTODetalles.getEstado());
+            proyectoDTO updatedProyectoDTO = proyectoService.save(proyectoDTO);
+            return ResponseEntity.ok(updatedProyectoDTO);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -53,8 +53,8 @@ public class proyectoController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteProyecto(@PathVariable Long id) {
-        Optional<proyecto> Proyecto = proyectoService.findById(id);
-        if (Proyecto.isPresent()) {
+        Optional<proyectoDTO> proyectoDTO = proyectoService.findById(id);
+        if (proyectoDTO.isPresent()) {
             proyectoService.deleteById(id);
             return ResponseEntity.noContent().build();
         } else {

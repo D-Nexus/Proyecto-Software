@@ -2,15 +2,16 @@ package proyecto.backend.service;
 
 import java.util.List;
 import java.util.Optional;
-import proyecto.backend.entity.proyecto;
+
+import proyecto.backend.DTO.proyectoDTO;
 
 public interface IproyectoService {
 
-    List<proyecto> findAll();
+    List<proyectoDTO> findAll();
 
-    Optional<proyecto> findById(Long id);
+    Optional<proyectoDTO> findById(Long id);
 
-    proyecto save(proyecto Proyecto);
+    proyectoDTO save(proyectoDTO ProyectoDTO);
 
     void deleteById(Long id);
 }

@@ -18,20 +18,20 @@ import java.util.Set;
 public class empleado {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // ID auto-incremental
+    private Long id; //PK
 
+    //Columnas
     private String nombre;
-    private LocalDate fechaIngreso;
-    private Double sueldoBruto;
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String tipoCargo;
+    private Double sueldoBruto;
     private String tipoContrato;
+    private LocalDate fechaIngreso;
     private Double sueldoConBono;
 
-
-    @OneToMany(mappedBy = "empleado")
+    @OneToMany(mappedBy = "empleado") //Relación unidireccional de 1 a n.
     @JsonIgnore
     private Set<registro> registros;
 
@@ -39,13 +39,16 @@ public class empleado {
         empleadoDTO empleadoDTO = new empleadoDTO();
         empleadoDTO.setId(id);
         empleadoDTO.setNombre(nombre);
-        empleadoDTO.setFechaIngreso(fechaIngreso);
-        empleadoDTO.setSueldoBruto(sueldoBruto);
         empleadoDTO.setApellidoPaterno(apellidoPaterno);
         empleadoDTO.setApellidoMaterno(apellidoMaterno);
         empleadoDTO.setTipoCargo(tipoCargo);
+        empleadoDTO.setSueldoBruto(sueldoBruto);
         empleadoDTO.setTipoContrato(tipoContrato);
+        empleadoDTO.setFechaIngreso(fechaIngreso);
         empleadoDTO.setSueldoConBono(sueldoConBono);
         return empleadoDTO;
     }
 }
+//Notas
+// .IDENTIFY Poca portabilidad pero eficiente para MySQL, Recomendación: .AUTO, ya que JPA elige la mejor opción dependiendo de la base de datos.
+// .Date especifica que solo se utilizara el formato dd-mm-yyyy y no se incluye la hora.
