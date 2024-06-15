@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import proyecto.backend.DTO.empleadoDTO;
 import proyecto.backend.repository.empleadoRepository;
 import proyecto.backend.entity.empleado;
+import proyecto.backend.repository.registroRepository;
 
 
 import java.util.ArrayList;
@@ -15,6 +16,11 @@ public class empleadoServiceImpl implements IempleadoService{
 
     @Autowired
     private empleadoRepository EmpleadoRepository;
+
+    @Autowired
+    private registroRepository RegistroRepository;
+
+
 
     public List<empleadoDTO> findAll() {
         List<empleado> TodosLosEmpleados = (List<empleado>) EmpleadoRepository.findAll();
@@ -38,6 +44,8 @@ public class empleadoServiceImpl implements IempleadoService{
     }
 
     public void deleteById(Long Id) {
+        Long Registro_a_eliminar = RegistroRepository.findRegistroIdByEmpleadoId(Id);
+        RegistroRepository.deleteById(Registro_a_eliminar);
         EmpleadoRepository.deleteById(Id);
     }
 
