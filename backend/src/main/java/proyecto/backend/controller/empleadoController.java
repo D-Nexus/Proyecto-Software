@@ -2,7 +2,7 @@ package proyecto.backend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import proyecto.backend.service.empleadoServiceImpl;
+import proyecto.backend.service.IempleadoService;
 import proyecto.backend.DTO.empleadoDTO;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.Optional;
 public class empleadoController {
 
     @Autowired
-    private empleadoServiceImpl empleadoService;
+    private IempleadoService empleadoService;
 
     @GetMapping("/getAll")
     public List<empleadoDTO> getAllempleadoDTOs() {
@@ -61,11 +61,5 @@ public class empleadoController {
             return ResponseEntity.notFound().build();
         }
     }
-    /*
-    @PostMapping("/asociarProyecto")
-    public ResponseEntity<Void> asociarempleadoDTOAProyecto(@RequestBody AsociarempleadoDTOProyectoDTO dto) {
-        empleadoService.asociarempleadoDTOAProyecto(dto.getempleadoDTOId(), dto.getProyectoId());
-        return new ResponseEntity<>(HttpStatus.OK);
-    }*/
 
 }
