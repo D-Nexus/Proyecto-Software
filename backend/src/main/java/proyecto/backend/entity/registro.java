@@ -19,10 +19,10 @@ public class registro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate fechaPago;
     private String RecibeBono;
-    private double montoBono;
     private String porcentaje;
+    private double montoBono;
+    private LocalDate fechaPago;
     private String estado;
 
 

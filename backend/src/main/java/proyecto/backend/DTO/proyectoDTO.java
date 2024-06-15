@@ -11,23 +11,23 @@ public class proyectoDTO {
 
     private Long id;
     private String nombreProyecto;
+    private String comuna;
+    private Integer cantEmpleados;
     private LocalDate fechaInicio;
     private LocalDate fechaTerminoPactada;
     private LocalDate fechaTerminoReal;
     private String estado;
-    private String comuna;
-    private Integer cantEmpleados;
 
     public proyecto toEntity() {
         proyecto p = new proyecto();
         p.setId(this.getId());
         p.setNombreProyecto(this.getNombreProyecto());
+        p.setComuna(this.getComuna());
+        p.setCantEmpleados(this.getCantEmpleados());
         p.setFechaInicio(this.getFechaInicio());
         p.setFechaTerminoPactada(this.getFechaTerminoPactada());
         p.setFechaTerminoReal(this.getFechaTerminoReal());
         p.setEstado(this.getEstado());
-        p.setComuna(this.getComuna());
-        p.setCantEmpleados(this.getCantEmpleados());
         return p;
     }
 }

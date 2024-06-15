@@ -12,22 +12,22 @@ import java.util.Date;
 public class registroDTO {
 
     private Long id;
-    private LocalDate fechaPago;
     private String recibeBono;
-    private Double montoBono;
     private String porcentaje;
+    private Double montoBono;
     private String estado;
+    private LocalDate fechaPago;
     private empleadoDTO empleado;
     private proyectoDTO proyecto;
 
     public registro toEntity() {
         registro r = new registro();
         r.setId(this.getId());
-        r.setFechaPago(this.getFechaPago());
         r.setRecibeBono(this.getRecibeBono());
-        r.setMontoBono(this.getMontoBono());
         r.setPorcentaje(this.getPorcentaje());
+        r.setMontoBono(this.getMontoBono());
         r.setEstado(this.getEstado());
+        r.setFechaPago(this.getFechaPago());
         r.setEmpleado(empleado.toEntity());
         r.setProyecto(proyecto.toEntity());
         return r;
