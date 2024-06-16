@@ -8,10 +8,10 @@ import java.time.LocalDate;
 public class proyectoDTO {
     private Long id;
     private String nombreProyecto;
+    private String comuna;
+    private Integer cantEmpleados;
     private String fechaInicio;
     private String fechaTerminoPactada;
     private String fechaTerminoReal;
     private String estado;
-    private String comuna;
-    private Integer cantEmpleados;
 }
