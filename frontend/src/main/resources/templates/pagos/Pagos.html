@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagos</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Pagos.css}">
+</head>
+<body>
+    <div class="pestanas">
+        <button type="button" class="btn">Menú</button>
+        <button type="button" class="btn">Empleado</button>
+        <button type="button" class="btn">Proyecto</button>
+        <button type="button" class="btn">Pagos</button>
+    </div>
+    
+    <h1>Pagos</h1>
+    <div class="contenedor">
+        <div class="tipo-de-identificacion">
+            <h2>Busqueda</h2>
+            <label for="Rut">Rut :</label>
+            <input type="text" id="Rut">
+            <label for="Nombre">Nombre :</label>
+            <input type="text" id="Nombre">
+            <label for="Apellido_Paterno">Apellido Paterno :</label>
+            <input type="text" id="Apellido_Paterno">
+            <label for="Apellido_Materno">Apellido Materno :</label>
+            <input type="text" id="Apellido_Materno">
+            <button type="submit" class="btn">Buscar</button>
+        </div>
+
+        <div class="informacion-de-contrato">
+            <h2>Calculo de Bono</h2>
+            <div class="button-container">
+                <label for="Fecha_de_ingreso">Fecha de ingreso :</label>
+                <input type="date" id="Fecha_de_ingreso">
+                <label for="Tipo_de_contrato">Tipo de contrato :</label>
+                <select id="Tipo_de_contrato" name="Tipo_de_contrato">
+                    <option value="opcion"></option>/*ejemplo*/
+                    <option value="opcion1">opcion 1</option>/*ejemplo*/
+                    <option value="opcion2">opcion 2</option>/*ejemplo*/
+                </select>
+                <label for="Tipo_de_cargo">Tipo de cargo :</label>
+                <select id="Tipo_de_cargo" name="Tipo_de_cargo">
+                    <option value="opcion"></option>/*ejemplo*/
+                    <option value="opcion1.5">opcion 1.5</option>/*ejemplo*/
+                    <option value="opcion2.5">opcion 2.5</option>/*ejemplo*/
+                </select>
+                <label for="Sueldo_bruto">Sueldo bruto :</label>
+                <input type="text" id="Sueldo_bruto">
+                <label for="Sueldo_con_bono">Sueldo con bono :</label>
+                <input type="text" id="Sueldo_con_bono">
+                <div class="button-container">
+                    <button type="submit" class="btn">Agregar</button>
+                    <button type="submit" class="btn">Actualizar</button>
+                    <button type="submit" class="btn">Borrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="Tabla" class="content Empleados">
+        <table>
+            <thead>
+                <tr>
+                    <th>RUT</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Nombre del proyecto</th>
+                    <th>inicio de proyecto</th>
+                    <th>Termino real del proyecto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>12345678-9</td>
+                    <td>Juan</td>
+                    <td>Pérez</td>
+                    <td>González</td>
+                    <td>Proyecto Alpha</td>
+                    <td>2024-01-15</td>
+                    <td>-----------</td>
+                </tr>
+                <tr>
+                    <td>12345678-9</td>
+                    <td>Juan</td>
+                    <td>Pérez</td>
+                    <td>González</td>
+                    <td>Proyecto Beta</td>
+                    <td>2024-02-01</td>
+                    <td>2024-06-15</td>
+                </tr>
+                <tr>
+                    <td>12345678-9</td>
+                    <td>Juan</td>
+                    <td>Pérez</td>
+                    <td>González</td>
+                    <td>Proyecto Gamma</td>
+                    <td>2024-03-10</td>
+                    <td>----------</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

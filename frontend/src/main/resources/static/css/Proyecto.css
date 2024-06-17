@@ -1,0 +1,130 @@
+/* margen general de la pagina*/
+body, h1, h2, div, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Tahoma", cursive;
+}
+body {
+    background: url('../img/background_menu.jpg') no-repeat center center fixed;
+    background-size: cover;
+
+}
+
+/* Estilo de la barra de navegación  y botones */
+
+.pestanas {
+    display: flex;
+    background-color: transparent ;
+    padding: 10px;
+}
+
+.pestanas .btn {
+    height: 40px; /* Altura deseada para los botones */
+    padding: 0 20px; /* Padding opcional para el espacio dentro del botón */
+    font-size: 16px; /* Tamaño de fuente opcional */
+    background-color: transparent; /* Color de fondo opcional */
+    border-right: 1px solid #ddd;
+    border-radius: 0%;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+
+/* los encabezados */
+h1 {
+    margin: 20px 0;
+    color: white;
+    text-align: center;
+}
+
+h2 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* la secciones de identificación y contrato */
+.contenedor{
+    display: flex;
+    gap: 0px; /* Espacio entre los elementos */
+}
+.Gestion_de_proyecto, .Informacion_de_proyecto{
+    color: white;
+    width: 200px;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    flex: auto;
+}
+
+
+.Gestion_de_proyecto label, .Informacion_de_proyecto label {
+    color: white;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.Gestion_de_proyecto input, .Informacion_de_proyecto input, select{
+    color: white;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+
+.Gestion_de_proyecto button, .Informacion_de_proyecto button {
+    color: white;
+    margin-top: 10px;
+}
+
+
+/* Tabla */
+table {
+    width: 96%;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+th, td { /* Define el padding, alineación de texto y borde para las celdas de la tabla.*/
+    padding: 10px;
+    border: 1px solid black;/* bordes de la tabla*/
+    text-align: left;
+    color: black;
+    font-size: 14px;
+}
+
+th {
+    background-color: rgb(253, 253, 253);/*cataegorizacion de elemntos */
+}
+
+/* Estilo para celdas de datos en filas pares */
+tbody tr:nth-child(even) td {
+    background-color: #c5e2f7; /* Color de fondo para filas pares */
+}
+
+/* Estilo para celdas de datos en filas impares */
+tbody tr:nth-child(odd) td {
+    background-color: #dfcece; /* Color de fondo para filas impares */
+}
+
+/* Estilo para hover sobre filas */
+tbody tr:hover td {
+    background-color: #f1f1f1; /* Color de fondo para hover */
+}
+

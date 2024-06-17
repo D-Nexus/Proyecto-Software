@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Proyecto.css}">
+</head>
+<body>
+    <div class="pestanas">
+        <button type="button" class="btn">Menú</button>
+        <button type="button" class="btn">Empleado</button>
+        <button type="button" class="btn">Proyecto</button>
+        <button type="button" class="btn">Pagos</button>
+    </div>
+    
+    <h1>Proyectos</h1>
+    <div class="contenedor">
+        <div class="Gestion_de_proyecto">
+            <h2>Gestion de proyecto</h2>
+            <label for="Nombre_de_Proyecto">Nombre de Proyecto :</label>
+            <input type="text" id="Nombre_de_Proyecto">
+            <label for="Comuna">Comuna :</label>
+            <input type="text" id="Comuna">
+            <label for="Estado">Estado :</label>
+            <input type="text" id="Estado">
+            <button type="submit" class="btn">Buscar</button>
+        </div>
+
+        <div class="Informacion_de_proyecto">
+            <h2>Informacion de proyecto</h2>
+                <label for="Fecha_de_inicio">Fecha de inicio :</label>
+                <input type="date" id="Fecha_de_ingreso">
+                <label for="Fecha_de_termino_pactado">Fecha de termino pactado :</label>
+                <input type="date" id="Fecha_de_termino_pactado">
+                <label for="cantidad_de_empleado">cantidad de empleado :</label>
+                <input type="text" id="cantidad_de_empleado">
+                <label for="Fecha_de_termino_real">Fecha de termino real :</label>
+                <input type="date" id="Fecha_de_termino_real">
+                <div class="button-container">
+                    <button type="submit" class="btn">Agregar</button>
+                    <button type="submit" class="btn">Actualizar</button>
+                    <button type="submit" class="btn">Borrar</button>
+                </div>
+        </div>
+    </div>
+
+    <div id="Tabla" class="content Empleados">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre de Proyecto</th>
+                    <th>Comuna</th>
+                    <th>Estado</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de termino pactado</th>
+                    <th>cantidad de Empleados</th>
+                    <th>Fecha de termino real</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Proyecto Alpha</td>
+                    <td>Santiago</td>
+                    <td>En Progreso</td>
+                    <td>01-03-2022</td>
+                    <td>01-12-2022</td>
+                    <td>20</td>
+                    <td>---</td>
+                </tr>
+                <tr>
+                    <td>Proyecto Beta</td>
+                    <td>Valparaíso</td>
+                    <td>Completado</td>
+                    <td>15-05-2021</td>
+                    <td>15-11-2021</td>
+                    <td>15</td>
+                    <td>13-11-2021</td>
+                </tr>
+                <tr>
+                    <td>Proyecto Gamma</td>
+                    <td>Concepción</td>
+                    <td>Retrasado</td>
+                    <td>10-07-2023</td>
+                    <td>10-01-2024</td>
+                    <td>25</td>
+                    <td>---</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
