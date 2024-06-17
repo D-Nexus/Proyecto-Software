@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleado</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/empleado.css}">
+</head>
+<body>
+    <div class="pestanas">
+        <button type="button" class="btn">Menú</button>
+        <button type="button" class="btn">Empleado</button>
+        <button type="button" class="btn">Proyecto</button>
+        <button type="button" class="btn">Pagos</button>
+    </div>
+    
+    <h1>Empleados</h1>
+    <div class="contenedor">
+        <div class="tipo-de-identificacion">
+            <h2>Tipo de identificación</h2>
+            <label for="Rut">Rut :</label>
+            <input type="text" id="Rut">
+            <label for="Nombre">Nombre :</label>
+            <input type="text" id="Nombre">
+            <label for="Apellido_Paterno">Apellido Paterno :</label>
+            <input type="text" id="Apellido_Paterno">
+            <label for="Apellido_Materno">Apellido Materno :</label>
+            <input type="text" id="Apellido_Materno">
+            <button type="submit" class="btn">Buscar</button>
+        </div>
+
+        <div class="informacion-de-contrato">
+            <h2>Información de contrato</h2>
+                <label for="Fecha_de_ingreso">Fecha de ingreso :</label>
+                <input type="date" id="Fecha_de_ingreso">
+                <label for="Tipo_de_contrato">Tipo de contrato :</label>
+                <select id="Tipo_de_contrato" name="Tipo_de_contrato">
+                    <option value="opcion"></option>/*ejemplo*/
+                    <option value="opcion1">opcion 1</option>/*ejemplo*/
+                    <option value="opcion2">opcion 2</option>/*ejemplo*/
+                </select>
+                <label for="Tipo_de_cargo">Tipo de cargo :</label>
+                <select id="Tipo_de_cargo" name="Tipo_de_cargo">
+                    <option value="opcion"></option>/*ejemplo*/
+                    <option value="opcion1.5">opcion 1.5</option>/*ejemplo*/
+                    <option value="opcion2.5">opcion 2.5</option>/*ejemplo*/
+                </select>
+                <label for="Sueldo_bruto">Sueldo bruto :</label>
+                <input type="text" id="Sueldo_bruto">
+                <label for="Sueldo_con_bono">Sueldo con bono :</label>
+                <input type="text" id="Sueldo_con_bono">
+                <div class="button-container">
+                    <button type="submit" class="btn">Agregar</button>
+                    <button type="submit" class="btn">Actualizar</button>
+                    <button type="submit" class="btn">Borrar</button>
+                </div>
+        </div>
+    </div>
+
+    <div id="Tabla" class="content Empleados">
+        <table>
+            <thead>
+                <tr>
+                    <th>RUT</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Fecha de Ingreso</th>
+                    <th>Tipo de Contrato</th>
+                    <th>Tipo de Cargo</th>
+                    <th>Sueldo Bruto</th>
+                    <th>Sueldo con Bono</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>12345678-9</td>
+                    <td>Juan</td>
+                    <td>Pérez</td>
+                    <td>González</td>
+                    <td>01-01-2020</td>
+                    <td>Indefinido</td>
+                    <td>Gerente</td>
+                    <td>$1,500,000</td>
+                    <td>$1,650,000</td>
+                </tr>
+                <tr>
+                    <td>98765432-1</td>
+                    <td>María</td>
+                    <td>López</td>
+                    <td>Rodríguez</td>
+                    <td>15-02-2018</td>
+                    <td>Plazo Fijo</td>
+                    <td>Asistente</td>
+                    <td>$900,000</td>
+                    <td>$950,000</td>
+                </tr>
+                <tr>
+                    <td>55555555-5</td>
+                    <td>Pedro</td>
+                    <td>Rojas</td>
+                    <td>Castillo</td>
+                    <td>10-07-2021</td>
+                    <td>Indefinido</td>
+                    <td>Analista</td>
+                    <td>$1,200,000</td>
+                    <td>$1,300,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

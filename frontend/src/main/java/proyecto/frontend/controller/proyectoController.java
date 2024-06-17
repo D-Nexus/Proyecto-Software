@@ -16,6 +16,12 @@ public class proyectoController{
     @Autowired
     private IproyectoService proyectoService;
 
+    //http://localhost:8081/api/proyectos/PaginaProyecto
+    @GetMapping("/PaginaProyecto")
+    public String home() {
+        return "proyectos/Proyecto";
+    }
+
     @GetMapping("/Pagina")
     public String paginaproyectos(Model model){
         List<proyectoDTO> proyectos = proyectoService.findAllREST();

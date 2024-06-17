@@ -16,6 +16,12 @@ public class empleadoController{
     @Autowired
     private IempleadoService empleadoService;
 
+    //http://localhost:8081/api/empleados/PaginaEmpleados
+    @GetMapping("/PaginaEmpleados")
+    public String home() {
+        return "empleados/Empleados";
+    }
+
     @GetMapping("/Pagina")
     public String paginaEmpleados(Model model){
 

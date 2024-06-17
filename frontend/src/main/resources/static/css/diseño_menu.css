@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../fonts/CuttingBoard.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../img/background_menu.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+.logo{
+    display: block;
+    margin: 0 auto 20px auto; /* Centrar la imagen y agregar margen inferior */
+    max-width: 200px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
+    width: 100%; /* Asegura que la imagen no se expanda más allá de su contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    box-shadow: 0px 0px 10px rgba(40, 249, 252);
+    border: 3px solid #ffffff;
+    border-radius: 5px;
+}
+.wrapper {
+    width: 100%; /* Ajusta el ancho de la caja envolvente para hacer espacio para los botones más grandes */
+    max-width: 600px; /* Limita el ancho máximo */
+    background: transparent;
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Espacio entre botones */
+    margin-top: 100px; /* Separación del contenedor de botones del resto del contenido */
+}
+.btn {
+    font-family: "Tahoma", cursive;
+    flex: 1; /* Permite que los botones crezcan igual */
+    padding: 15px 20px; /* Ajusta el tamaño de los botones */
+    font-size: 20px; /* Tamaño del texto dentro de los botones */
+    box-shadow: 0px 0px 10px rgba(40, 249, 252);
+    border: 3px solid #7abaff;
+    border-radius: 10px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transición suave para el hover */
+    margin: 0 15px; /* Espacio entre los botones */
+}
+
+.btn:hover {
+    background-color: white;
+}
+
+.wrapper h1 {
+    font-family: 'CustomFont', sans-serif;
+    font-size: 44px;
+    text-align: center;
+    padding: 10px; /* Espacio interno para separar el texto del borde */
+
+}
