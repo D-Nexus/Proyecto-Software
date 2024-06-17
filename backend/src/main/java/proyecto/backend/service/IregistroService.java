@@ -2,15 +2,15 @@ package proyecto.backend.service;
 
 import java.util.List;
 import java.util.Optional;
-import proyecto.backend.entity.registro;
+import proyecto.backend.DTO.registroDTO;
 
 public interface IregistroService {
 
-    List<registro> findAll();
+    List<registroDTO> findAll();
 
-    Optional<registro> findById(Long id);
+    Optional<registroDTO> findById(Long id);
 
-    registro save(registro registro);
+    registroDTO save(registroDTO registro);
 
     void deleteById(Long id);
 }

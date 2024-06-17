@@ -8,11 +8,11 @@ import java.time.LocalDate;
 public class registroDTO {
 
     private Long id;
-    private String fechaPago;
     private String recibeBono;
-    private Double montoBono;
     private String porcentaje;
+    private Double montoBono;
     private String estado;
+    private String fechaPago;
     private empleadoDTO empleado;
     private proyectoDTO proyecto;
 }

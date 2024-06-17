@@ -9,12 +9,12 @@ public class empleadoDTO {
 
     private Long id;
     private String nombre;
-    private String fechaIngreso;
-    private Double sueldoBruto;
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String tipoCargo;
+    private Double sueldoBruto;
     private String tipoContrato;
+    private String fechaIngreso;
     private Double sueldoConBono;
 }
 

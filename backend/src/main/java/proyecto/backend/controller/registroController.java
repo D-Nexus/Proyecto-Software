@@ -3,8 +3,8 @@ package proyecto.backend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import proyecto.backend.service.registroServiceImpl;
-import proyecto.backend.entity.registro;
+import proyecto.backend.service.IregistroService;
+import proyecto.backend.DTO.registroDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,29 +14,29 @@ import java.util.Optional;
 public class registroController {
 
     @Autowired
-    private registroServiceImpl registroService;
+    private IregistroService registroService;
 
     @GetMapping("/getAll")
-    public List<registro> getAllregistros() {
+    public List<registroDTO> getAllregistros() {
         return registroService.findAll();
     }
 
-    @GetMapping("/SearchById/{id}")
-    public ResponseEntity<registro> getRegistroById(@PathVariable Long id) {
-        Optional<registro> Registro = registroService.findById(id);
+    @GetMapping("/SearchByID/{id}")
+    public ResponseEntity<registroDTO> getRegistroById(@PathVariable Long id) {
+        Optional<registroDTO> Registro = registroService.findById(id);
         return  Registro.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/create")
-    public registro createRegistro(@RequestBody registro Registro) {
+    public registroDTO createRegistro(@RequestBody registroDTO Registro) {
         return registroService.save(Registro);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<registro> updateRegistro(@PathVariable Long id, @RequestBody registro registroDetalles) {
-        Optional<registro> optionalRegistro = registroService.findById(id);
+    public ResponseEntity<registroDTO> updateRegistro(@PathVariable Long id, @RequestBody registroDTO registroDetalles) {
+        Optional<registroDTO> optionalRegistro = registroService.findById(id);
         if (optionalRegistro.isPresent()) {
-            registro Registro = optionalRegistro.get();
+            registroDTO Registro = optionalRegistro.get();
             Registro.setRecibeBono(registroDetalles.getRecibeBono());
             Registro.setPorcentaje(registroDetalles.getPorcentaje());
             Registro.setMontoBono(registroDetalles.getMontoBono());
@@ -44,7 +44,7 @@ public class registroController {
             Registro.setFechaPago(registroDetalles.getFechaPago());
             Registro.setEmpleado(registroDetalles.getEmpleado());
             Registro.setProyecto(registroDetalles.getProyecto());
-            registro updatedRegistro = registroService.save(Registro);
+            registroDTO updatedRegistro = registroService.save(Registro);
             return ResponseEntity.ok(updatedRegistro);
         } else {
             return ResponseEntity.notFound().build();
@@ -53,7 +53,7 @@ public class registroController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteRegistro(@PathVariable Long id) {
-        Optional<registro> Registro = registroService.findById(id);
+        Optional<registroDTO> Registro = registroService.findById(id);
         if (Registro.isPresent()) {
             registroService.deleteById(id);
             return ResponseEntity.noContent().build();

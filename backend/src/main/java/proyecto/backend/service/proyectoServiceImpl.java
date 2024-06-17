@@ -11,12 +11,16 @@ import java.util.Optional;
 import proyecto.backend.DTO.proyectoDTO;
 import proyecto.backend.entity.proyecto;
 import proyecto.backend.repository.proyectoRepository;
+import proyecto.backend.repository.registroRepository;
 
 @Service
 public class proyectoServiceImpl implements IproyectoService {
 
     @Autowired
     private proyectoRepository ProyectoRepository;
+
+    @Autowired
+    private registroRepository RegistroRepository;
 
     public List<proyectoDTO> findAll() {
         List<proyecto> TodosLosProyectos = (List<proyecto>) ProyectoRepository.findAll();
@@ -40,6 +44,8 @@ public class proyectoServiceImpl implements IproyectoService {
     }
 
     public void deleteById(Long Id) {
+        Long Registro_a_eliminar = RegistroRepository.findRegistroIdByProyectoId(Id);
+        RegistroRepository.deleteById(Registro_a_eliminar);
         ProyectoRepository.deleteById(Id);
     }
 }
