@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import proyecto.backend.DTO.registroDTO;
 
 import java.time.LocalDate;
 
@@ -36,4 +37,14 @@ public class registro {
     @JsonIgnore
     private proyecto proyecto;
 
+    public registroDTO toDTO(){
+        registroDTO RegistroDTO = new registroDTO();
+        RegistroDTO.setId(this.getId());
+        RegistroDTO.setRecibeBono(this.getRecibeBono());
+        RegistroDTO.setPorcentaje(this.getPorcentaje());
+        RegistroDTO.setMontoBono(this.getMontoBono());
+        RegistroDTO.setEstado(this.getEstado());
+        RegistroDTO.setFechaPago(this.getFechaPago());
+        return RegistroDTO;
+    }
 }
