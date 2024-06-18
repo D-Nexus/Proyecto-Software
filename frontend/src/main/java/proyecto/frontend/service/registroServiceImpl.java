@@ -54,30 +54,6 @@ public class registroServiceImpl implements IregistroService{
         }
     }
 
-    @Override
-    public registroDTO saveREST(registroDTO registroDTO) {
-        try {
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-
-            HttpEntity<registroDTO> requestEntity = new HttpEntity<>(registroDTO, headers);
-
-            RestTemplate restTemplate = new RestTemplate();
-            ResponseEntity<registroDTO> responseEntity = restTemplate.postForEntity("http://localhost:8080/api/registros/create",
-                    requestEntity, registroDTO.class);
-
-            if (responseEntity.getStatusCode().is2xxSuccessful()) {
-                registroDTO dto = responseEntity.getBody();
-                return dto;
-            } else {
-                System.out.println("A ocurrido un error");
-                return null;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 
     @Override
     public registroDTO updateREST(Long id, registroDTO registroDTO) {

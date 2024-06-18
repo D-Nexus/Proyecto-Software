@@ -28,11 +28,6 @@ public class registroController {
         return  Registro.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/create")
-    public registroDTO createRegistro(@RequestBody registroDTO Registro) {
-        return registroService.save(Registro);
-    }
-
     @PutMapping("/update/{id}")
     public ResponseEntity<registroDTO> updateRegistro(@PathVariable Long id, @RequestBody registroDTO registroDetalles) {
         Optional<registroDTO> optionalRegistro = registroService.findById(id);
@@ -46,7 +41,7 @@ public class registroController {
             Registro.setSueldoConBono(registroDetalles.getSueldoConBono());
             Registro.setEmpleado(registroDetalles.getEmpleado());
             Registro.setProyecto(registroDetalles.getProyecto());
-            registroDTO updatedRegistro = registroService.save(Registro);
+            registroDTO updatedRegistro = registroService.calcularBono(Registro);
             return ResponseEntity.ok(updatedRegistro);
         } else {
             return ResponseEntity.notFound().build();
