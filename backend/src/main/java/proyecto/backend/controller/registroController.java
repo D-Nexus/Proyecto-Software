@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import proyecto.backend.service.IregistroService;
 import proyecto.backend.DTO.registroDTO;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +43,7 @@ public class registroController {
             Registro.setMontoBono(registroDetalles.getMontoBono());
             Registro.setEstado(registroDetalles.getEstado());
             Registro.setFechaPago(registroDetalles.getFechaPago());
+            Registro.setSueldoConBono(registroDetalles.getSueldoConBono());
             Registro.setEmpleado(registroDetalles.getEmpleado());
             Registro.setProyecto(registroDetalles.getProyecto());
             registroDTO updatedRegistro = registroService.save(Registro);
@@ -60,6 +62,11 @@ public class registroController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PostMapping("/calcularBono")
+    public registroDTO obtenerBono(@RequestBody registroDTO RegistroDTO) {
+         return registroService.calcularBono(RegistroDTO);
     }
 }
 

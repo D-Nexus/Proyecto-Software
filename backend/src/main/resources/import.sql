@@ -32,15 +32,15 @@ INSERT INTO proyectos (nombre_proyecto, comuna, cant_empleados, fecha_inicio, fe
 
 
 -- Insertar datos en la tabla Registro
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '10%', 50000, 'Aprobado', 1, 1);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '25%', 125000, 'Aprobado', 2, 2);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '45%', 225000, 'Aprobado', 3, 3);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '10%', 45000, 'Aprobado', 4, 4);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '25%', 75000, 'Aprobado', 5, 5);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '45%', 135000, 'Aprobado', 6, 6);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '10%', 50000, 'Aprobado', 7, 7);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '25%', 125000, 'Aprobado', 8, 8);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '45%', 225000, 'Aprobado', 9, 9);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '10%', 45000, 'Aprobado', 10, 10);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '25%', 75000, 'Aprobado', 11, 11);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '45%', 135000, 'Aprobado', 12, 12);
+INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto,sueldo_Con_Bono) VALUES ('Si', '10%', 50000, 'Aprobado', 1, 1,1000);
+INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto,sueldo_Con_Bono) VALUES ('Si', '25%', 125000, 'Aprobado', 2, 2,1000);
+INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto,sueldo_Con_Bono) VALUES ('Si', '45%', 225000, 'Aprobado', 3, 3,1000);
+INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto,sueldo_Con_Bono) VALUES ('Si', '10%', 45000, 'Aprobado', 4, 4,1000);
+INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto,sueldo_Con_Bono) VALUES ('Si', '25%', 75000, 'Aprobado', 5, 5,1000);
+INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto,sueldo_Con_Bono) VALUES ('Si', '45%', 135000, 'Aprobado', 6, 6,1000);
+INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto,sueldo_Con_Bono) VALUES ('Si', '10%', 50000, 'Aprobado', 7, 7,1000);
+INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto,sueldo_Con_Bono) VALUES ('Si', '25%', 125000, 'Aprobado', 8, 8,1000);
+INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto,sueldo_Con_Bono) VALUES ('Si', '45%', 225000, 'Aprobado', 9, 9,1000);
+INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto,sueldo_Con_Bono) VALUES ('Si', '10%', 45000, 'Aprobado', 10, 10,1000);
+INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto,sueldo_Con_Bono) VALUES ('Si', '25%', 75000, 'Aprobado', 11, 11,1000);
+INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto,sueldo_Con_Bono) VALUES ('Si', '45%', 135000, 'Aprobado', 12, 12,1000);

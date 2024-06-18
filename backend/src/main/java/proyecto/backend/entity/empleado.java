@@ -29,7 +29,6 @@ public class empleado {
     private Double sueldoBruto;
     private String tipoContrato;
     private LocalDate fechaIngreso;
-    private Double sueldoConBono;
 
     @OneToMany(mappedBy = "empleado") //Relación unidireccional de 1 a n.
     @JsonIgnore
@@ -45,7 +44,6 @@ public class empleado {
         empleadoDTO.setSueldoBruto(sueldoBruto);
         empleadoDTO.setTipoContrato(tipoContrato);
         empleadoDTO.setFechaIngreso(fechaIngreso);
-        empleadoDTO.setSueldoConBono(sueldoConBono);
         return empleadoDTO;
     }
 }

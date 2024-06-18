@@ -16,7 +16,6 @@ public class empleadoDTO {
     private Double sueldoBruto;
     private String tipoContrato;
     private LocalDate fechaIngreso;
-    private Double sueldoConBono;
 
     public empleado toEntity() {
         empleado e = new empleado();
@@ -28,7 +27,6 @@ public class empleadoDTO {
         e.setSueldoBruto(this.getSueldoBruto());
         e.setTipoContrato(this.getTipoContrato());
         e.setFechaIngreso(this.getFechaIngreso());
-        e.setSueldoConBono(this.getSueldoConBono());
         return e;
     }
 }

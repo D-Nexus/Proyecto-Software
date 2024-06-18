@@ -15,6 +15,5 @@ public class empleadoDTO {
     private Double sueldoBruto;
     private String tipoContrato;
     private String fechaIngreso;
-    private Double sueldoConBono;
 }
 

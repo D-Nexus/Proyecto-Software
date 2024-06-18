@@ -43,7 +43,6 @@ public class empleadoController {
             EmpleadoDTO.setSueldoBruto(EmpleadoDTODetalles.getSueldoBruto());
             EmpleadoDTO.setFechaIngreso(EmpleadoDTODetalles.getFechaIngreso());
             EmpleadoDTO.setTipoContrato(EmpleadoDTODetalles.getTipoContrato());
-            EmpleadoDTO.setSueldoConBono(EmpleadoDTODetalles.getSueldoConBono());
             empleadoDTO updatedempleadoDTO = empleadoService.save(EmpleadoDTO);
             return ResponseEntity.ok(updatedempleadoDTO);
         } else {

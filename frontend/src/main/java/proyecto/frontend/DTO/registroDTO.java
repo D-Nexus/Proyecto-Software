@@ -13,6 +13,7 @@ public class registroDTO {
     private Double montoBono;
     private String estado;
     private String fechaPago;
+    private Double sueldoConBono;
     private empleadoDTO empleado;
     private proyectoDTO proyecto;
 }

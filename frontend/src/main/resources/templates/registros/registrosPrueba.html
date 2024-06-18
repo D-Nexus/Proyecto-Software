@@ -5,22 +5,29 @@
     <title>IGNACIO HORMAZABAL</title>
 </head>
 <body>
-<table class="table table-striped table-bordered">
-    <thead class="table-dark">
+<table>
     <tr>
         <th>ID</th>
-        <th>Fecha De Pago</th>
         <th>Recibe Bono</th>
+        <th>Porcentaje</th>
+        <th>Monto Bono</th>
+        <th>Estado</th>
+        <th>Fecha Pago</th>
+        <th>Sueldo Con Bono</th>
+        <th>Empleado</th>
+        <th>Proyecto</th>
     </tr>
-    </thead>
-    <tbody>
-    <tr th:each="registro: ${registros}">
-        <td th:text="${registro.id}">ID</td>
-        <td th:text="${registro.montoBono}">monto Bono</td>
-        <td th:text="${registro.recibeBono}">Recibe Bono</td>
+    <tr>
+        <td th:text="${Bonos.id}">ID</td>
+        <td th:text="${Bonos.recibeBono}">Recibe Bono</td>
+        <td th:text="${Bonos.porcentaje}">Porcentaje</td>
+        <td th:text="${Bonos.montoBono}">Monto Bono</td>
+        <td th:text="${Bonos.estado}">Estado</td>
+        <td th:text="${Bonos.fechaPago}">Fecha Pago</td>
+        <td th:text="${Bonos.sueldoConBono}">Sueldo Con Bono</td>
+        <td th:text="${Bonos.empleado.nombre}">Empleado</td>
+        <td th:text="${Bonos.proyecto.nombreProyecto}">Proyecto</td>
     </tr>
-    </tbody>
-
 </table>
 </body>
 </html>
