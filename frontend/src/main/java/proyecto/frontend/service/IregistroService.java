@@ -15,4 +15,6 @@ public interface IregistroService {
     public registroDTO updateREST(Long id, registroDTO RegistroDTO);
 
     public registroDTO deleteREST(Long id);
+
+    public registroDTO CalcularBonoREST(registroDTO RegistroDTO);
 }

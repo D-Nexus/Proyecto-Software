@@ -25,6 +25,7 @@ public class registro {
     private double montoBono;
     private LocalDate fechaPago;
     private String estado;
+    private Double sueldoConBono;
 
 
     @ManyToOne
@@ -45,6 +46,9 @@ public class registro {
         RegistroDTO.setMontoBono(this.getMontoBono());
         RegistroDTO.setEstado(this.getEstado());
         RegistroDTO.setFechaPago(this.getFechaPago());
+        RegistroDTO.setSueldoConBono(this.getSueldoConBono());
+        RegistroDTO.setEmpleado(this.empleado.toDTO());
+        RegistroDTO.setProyecto(this.proyecto.toDTO());
         return RegistroDTO;
     }
 }

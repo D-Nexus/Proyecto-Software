@@ -21,7 +21,7 @@ public class proyectoController {
         return proyectoService.findAll();
     }
 
-    @GetMapping("/searchById/{id}")
+    @GetMapping("/SearchByID/{id}")
     public ResponseEntity<proyectoDTO> getProyectoDTOById(@PathVariable Long id) {
         Optional<proyectoDTO> proyectoDTO = proyectoService.findById(id);
         return proyectoDTO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());

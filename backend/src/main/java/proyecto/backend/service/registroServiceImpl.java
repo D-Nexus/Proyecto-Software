@@ -3,6 +3,9 @@ package proyecto.backend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -10,8 +13,8 @@ import java.util.Optional;
 import proyecto.backend.DTO.registroDTO;
 import proyecto.backend.entity.registro;
 import proyecto.backend.repository.registroRepository;
-import proyecto.backend.repository.proyectoRepository;
-import proyecto.backend.repository.empleadoRepository;
+import proyecto.backend.DTO.proyectoDTO;
+import proyecto.backend.DTO.empleadoDTO;
 
 
 @Service
@@ -46,5 +49,74 @@ public class registroServiceImpl implements IregistroService {
     public void deleteById(Long Id) {
         RegistroRepository.ClearEmpleadoIdYProyectoIdByRegistroId(Id);
         RegistroRepository.deleteById(Id);
+    }
+
+    public registroDTO calcularBono(registroDTO registro) {
+        empleadoDTO empleado = registro.getEmpleado();
+        proyectoDTO proyecto = registro.getProyecto();
+
+        if (empleado == null || proyecto == null) {
+            throw new IllegalArgumentException("Empleado y proyecto no pueden ser nulos");
+        }
+
+        BigDecimal bono = BigDecimal.ZERO;
+        BigDecimal sueldoBruto = empleado.getSueldoBruto() != null ? BigDecimal.valueOf(empleado.getSueldoBruto()) : BigDecimal.ZERO;
+        LocalDate fechaIngresoEmpleado = empleado.getFechaIngreso();
+        LocalDate fechaInicioProyecto = proyecto.getFechaInicio();
+        LocalDate fechaTerminoPactada = proyecto.getFechaTerminoPactada();
+        LocalDate fechaTerminoReal = proyecto.getFechaTerminoReal();
+        String estado = proyecto.getEstado();
+
+        System.out.println(proyecto.toString());
+        System.out.println(empleado.toString());
+
+        if (fechaIngresoEmpleado == null || fechaInicioProyecto == null || fechaTerminoPactada == null || fechaTerminoReal == null || estado == "Terminado") {
+            throw new IllegalArgumentException("Error hay datos que no existen");
+        }
+
+        // Calcula los años que el empleado lleva en la empresa antes del inicio del proyecto
+        long anosEnEmpresaAntesDelProyecto = ChronoUnit.YEARS.between(fechaIngresoEmpleado, fechaInicioProyecto);
+
+        // Condiciones para calcular el bono basado en las fechas y el estado del proyecto
+        if (fechaTerminoReal.isEqual(fechaTerminoPactada)) {
+            // Fecha de entrega es igual a la fecha pactada se agrega un bono del 10%
+            bono = sueldoBruto.multiply(new BigDecimal("0.10"));
+            registro.setMontoBono(Double.valueOf(String.valueOf(bono)));
+            registro.setPorcentaje("10%");
+            registro.setRecibeBono("Si");
+            registro.setEstado("Aprobado");
+            registro.setFechaPago(LocalDate.now());
+            registro.setSueldoConBono(empleado.getSueldoBruto()+ bono.doubleValue());
+        } else if (fechaTerminoReal.isBefore(fechaTerminoPactada) && estado.equals("Terminado")) {
+            // Fecha de entrega es anticipada se agrega un bono del 25%
+            bono = sueldoBruto.multiply(new BigDecimal("0.25"));
+            registro.setMontoBono(Double.valueOf(String.valueOf(bono)));
+            registro.setPorcentaje("25%");
+            registro.setRecibeBono("Si");
+            registro.setEstado("Aprobado");
+            registro.setFechaPago(LocalDate.now());
+            registro.setSueldoConBono(empleado.getSueldoBruto()+ bono.doubleValue());
+        } else if (fechaTerminoReal.isAfter(fechaTerminoPactada)) {
+            // Fecha de entrega es posterior a la fecha pactada, no aplica bonificación
+            bono = BigDecimal.ZERO;
+            registro.setMontoBono(Double.valueOf(String.valueOf(bono)));
+            registro.setPorcentaje("0%");
+            registro.setRecibeBono("No");
+            registro.setEstado("Rechazado");
+            registro.setSueldoConBono(bono.doubleValue());
+            registro.setFechaPago(LocalDate.now());
+        }
+
+        // Condición para bonificación adicional por antigüedad
+        if (anosEnEmpresaAntesDelProyecto >= 2 && !bono.equals(BigDecimal.ZERO) && !estado.equals("Rechazado")){
+            bono = sueldoBruto.multiply(new BigDecimal("0.45"));
+            registro.setMontoBono(Double.valueOf(String.valueOf(bono)));
+            registro.setPorcentaje("45%");
+            registro.setSueldoConBono(empleado.getSueldoBruto()+ bono.doubleValue());
+        }
+        // Guardamos el registro en la base de datos
+        registro GuardarRegistro = RegistroRepository.save(registro.toEntity());
+
+        return GuardarRegistro.toDTO();
     }
 }
