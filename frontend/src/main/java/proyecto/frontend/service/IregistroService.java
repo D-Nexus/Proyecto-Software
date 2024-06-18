@@ -10,8 +10,6 @@ public interface IregistroService {
 
     public registroDTO findByIdREST(Long id);
 
-    public registroDTO saveREST(registroDTO RegistroDTO);
-
     public registroDTO updateREST(Long id, registroDTO RegistroDTO);
 
     public registroDTO deleteREST(Long id);

@@ -12,8 +12,6 @@ public interface IregistroService {
 
     Optional<registroDTO> findById(Long id);
 
-    registroDTO save(registroDTO registro);
-
     void deleteById(Long id);
 
     registroDTO calcularBono(registroDTO registro);

@@ -41,11 +41,6 @@ public class registroServiceImpl implements IregistroService {
         return Optional.ofNullable(dto);
     }
 
-    public registroDTO save(registroDTO Registrodto) {
-        registro Guardarregistro = RegistroRepository.save(Registrodto.toEntity()); //Convertir registroDTO a registro con el metodo toEntity
-        return Guardarregistro.toDTO(); // Se devuelve convirtiendo el registro a DTO
-    }
-
     public void deleteById(Long Id) {
         RegistroRepository.ClearEmpleadoIdYProyectoIdByRegistroId(Id);
         RegistroRepository.deleteById(Id);
@@ -66,9 +61,6 @@ public class registroServiceImpl implements IregistroService {
         LocalDate fechaTerminoPactada = proyecto.getFechaTerminoPactada();
         LocalDate fechaTerminoReal = proyecto.getFechaTerminoReal();
         String estado = proyecto.getEstado();
-
-        System.out.println(proyecto.toString());
-        System.out.println(empleado.toString());
 
         if (fechaIngresoEmpleado == null || fechaInicioProyecto == null || fechaTerminoPactada == null || fechaTerminoReal == null || estado == "Terminado") {
             throw new IllegalArgumentException("Error hay datos que no existen");
