@@ -36,13 +36,30 @@ public class empleadoController {
         Optional<empleadoDTO> optionalempleadoDTO = empleadoService.findById(id);
         if (optionalempleadoDTO.isPresent()) {
             empleadoDTO EmpleadoDTO = optionalempleadoDTO.get();
-            EmpleadoDTO.setNombre(EmpleadoDTODetalles.getNombre());
-            EmpleadoDTO.setApellidoPaterno(EmpleadoDTODetalles.getApellidoPaterno());
-            EmpleadoDTO.setApellidoMaterno(EmpleadoDTODetalles.getApellidoMaterno());
-            EmpleadoDTO.setTipoCargo(EmpleadoDTODetalles.getTipoCargo());
-            EmpleadoDTO.setSueldoBruto(EmpleadoDTODetalles.getSueldoBruto());
-            EmpleadoDTO.setFechaIngreso(EmpleadoDTODetalles.getFechaIngreso());
-            EmpleadoDTO.setTipoContrato(EmpleadoDTODetalles.getTipoContrato());
+
+            // Verificar cada campo antes de actualizarlo
+            if (EmpleadoDTODetalles.getNombre() != null) {
+                EmpleadoDTO.setNombre(EmpleadoDTODetalles.getNombre());
+            }
+            if (EmpleadoDTODetalles.getApellidoPaterno() != null) {
+                EmpleadoDTO.setApellidoPaterno(EmpleadoDTODetalles.getApellidoPaterno());
+            }
+            if (EmpleadoDTODetalles.getApellidoMaterno() != null) {
+                EmpleadoDTO.setApellidoMaterno(EmpleadoDTODetalles.getApellidoMaterno());
+            }
+            if (EmpleadoDTODetalles.getTipoCargo() != null) {
+                EmpleadoDTO.setTipoCargo(EmpleadoDTODetalles.getTipoCargo());
+            }
+            if (EmpleadoDTODetalles.getSueldoBruto() != null) {
+                EmpleadoDTO.setSueldoBruto(EmpleadoDTODetalles.getSueldoBruto());
+            }
+            if (EmpleadoDTODetalles.getFechaIngreso() != null) {
+                EmpleadoDTO.setFechaIngreso(EmpleadoDTODetalles.getFechaIngreso());
+            }
+            if (EmpleadoDTODetalles.getTipoContrato() != null) {
+                EmpleadoDTO.setTipoContrato(EmpleadoDTODetalles.getTipoContrato());
+            }
+
             empleadoDTO updatedempleadoDTO = empleadoService.save(EmpleadoDTO);
             return ResponseEntity.ok(updatedempleadoDTO);
         } else {
