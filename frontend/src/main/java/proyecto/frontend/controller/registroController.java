@@ -36,7 +36,6 @@ public class registroController{
         registro.setMontoBono(0.0);
         registro.setEstado("");
         registro.setFechaPago("");
-        registro.setSueldoConBono(0.0);
 
         empleadoDTO empleado = empleadoService.findByIdREST(3L);
         proyectoDTO proyecto = proyectoService.findByIdREST(7L);
