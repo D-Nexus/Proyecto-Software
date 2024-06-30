@@ -38,7 +38,6 @@ public class registroController {
             Registro.setMontoBono(registroDetalles.getMontoBono());
             Registro.setEstado(registroDetalles.getEstado());
             Registro.setFechaPago(registroDetalles.getFechaPago());
-            Registro.setSueldoConBono(registroDetalles.getSueldoConBono());
             Registro.setEmpleado(registroDetalles.getEmpleado());
             Registro.setProyecto(registroDetalles.getProyecto());
             registroDTO updatedRegistro = registroService.calcularBono(Registro);
