@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar Empleado</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-4">
+    <div class="col-sm-6">
+        <form th:action="@{/api/empleados/Update}" th:object="${empleadoEditar}" method="post" enctype="application/x-www-form-urlencoded">
+            <input type="hidden" th:field="*{id}"/>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Empleado</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" th:field="*{nombre}" class="form-control" id="nombre"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apellidoPaterno">Apellido Paterno</label>
+                        <input type="text" th:field="*{apellidoPaterno}" class="form-control" id="apellidoPaterno"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apellidoMaterno">Apellido Materno</label>
+                        <input type="text" th:field="*{apellidoMaterno}" class="form-control" id="apellidoMaterno"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipoCargo">Tipo de Cargo</label>
+                        <input type="text" th:field="*{tipoCargo}" class="form-control" id="tipoCargo"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sueldoBruto">Sueldo Bruto</label>
+                        <input type="text" th:field="*{sueldoBruto}" class="form-control" id="sueldoBruto"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipoContrato">Tipo de Contrato</label>
+                        <input type="text" th:field="*{tipoContrato}" class="form-control" id="tipoContrato"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fechaIngreso">Fecha de Ingreso</label>
+                        <input type="text" th:field="*{fechaIngreso}" class="form-control" id="fechaIngreso"/>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Guardar" class="btn btn-success"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+

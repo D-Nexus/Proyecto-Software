@@ -45,7 +45,9 @@ public class empleadoServiceImpl implements IempleadoService{
 
     public void deleteById(Long Id) {
         Long Registro_a_eliminar = RegistroRepository.findRegistroIdByEmpleadoId(Id);
-        RegistroRepository.deleteById(Registro_a_eliminar);
+        if (Registro_a_eliminar != null){
+            RegistroRepository.deleteById(Registro_a_eliminar);
+        }
         EmpleadoRepository.deleteById(Id);
     }
 
