@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mantenedor Empleados API REST</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('https://wallpaperaccess.com/full/345781.jpg'); /* Reemplaza la URL con la de tu imagen de fondo */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+        .container {
+            background-color: #fff; /* Fondo blanco sólido */
+            padding: 20px;
+            border: 2px solid #000; /* Borde sólido de color negro (#000) */
+            border-radius: 10px; /* Borde curvado */
+            margin-top: 30px;
+        }
+        .volver-button {
+            text-align: center;
+            margin-top: 20px; /* Agrega espacio entre el panel y el botón */
+        }
+        .volver-button .btn {
+            font-size: 20px; /* Aumenta el tamaño del texto del botón */
+        }
+        .copyright {
+            font-size: 1rem;
+            text-align: right;
+            position: absolute;
+            color: #fff; /* Texto blanco en el botón */
+            bottom: 10px;
+            right: 10px;
+        }
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-input {
+            width: 60%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search-button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-4">
+    <div class="search-bar">
+        <input type="text" class="search-input" id="searchInput" placeholder="Buscar por nombre, apellido, tipo de cargo, Etc">
+        <button class="search-button" onclick="filterTable()">Buscar</button>
+        <button class="search-button" onclick="clearFilter()">Eliminar Filtro</button>
+    </div>
+    <a th:href="@{Formulario}" class="btn btn-primary">Nuevo</a>
+    <br>
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO PATERNO</th>
+            <th>APELLIDO MATERNO</th>
+            <th>TIPO DE CARGO</th>
+            <th>SUELDO BRUTO</th>
+            <th>TIPO DE CONTRATO</th>
+            <th>FECHA DE INGRESO</th>
+            <th>EDITAR/ELIMINAR</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="empleado:${empleados}">
+            <td th:text="${empleado.id}"></td>
+            <td th:text="${empleado.nombre}"></td>
+            <td th:text="${empleado.apellidoPaterno}"></td>
+            <td th:text="${empleado.apellidoMaterno}"></td>
+            <td th:text="${empleado.tipoCargo}"></td>
+            <td th:text="${empleado.sueldoBruto}"></td>
+            <td th:text="${empleado.tipoContrato}"></td>
+            <td th:text="${empleado.fechaIngreso}"></td>
+            <td>
+                <!-- Botón para editar -->
+                <a class="btn btn-warning" th:href="@{|/api/empleados/editar/${empleado.id}|}">Editar</a>
+                <!-- Botón para eliminar -->
+                <a class="btn btn-danger" th:onclick="'javascript:FuncionEliminar(\'' + ${empleado.id} + '\');'">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="volver-button">
+    <a href="http://localhost:8081/api/home/" class="btn btn-secondary btn-lg btn-dark">Volver</a>
+</div>
+<div class="copyright">
+    &copy; 2024 Equipo6. Todos los derechos reservados.
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/FuncionEliminar.js"></script>
+<script>
+    function filterTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.querySelector(".table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 1; i < tr.length; i++) { // Comienza desde 1 para omitir la primera fila (títulos)
+            var found = false;
+            for (var j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
+                td = tr[i].getElementsByTagName("td")[j];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            tr[i].style.display = found ? "" : "none";
+        }
+    }
+
+    function clearFilter() {
+        var input = document.getElementById("searchInput");
+        input.value = "";
+        filterTable(); // Llama a la función filterTable para mostrar todos los elementos nuevamente
+    }
+</script>
+</body>
+</html>
