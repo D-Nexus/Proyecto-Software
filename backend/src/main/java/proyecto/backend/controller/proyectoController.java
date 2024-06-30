@@ -37,13 +37,30 @@ public class proyectoController {
         Optional<proyectoDTO> optionalProyectoDTO = proyectoService.findById(id);
         if (optionalProyectoDTO.isPresent()) {
             proyectoDTO proyectoDTO = optionalProyectoDTO.get();
-            proyectoDTO.setNombreProyecto(proyectoDTODetalles.getNombreProyecto());
-            proyectoDTO.setComuna(proyectoDTODetalles.getComuna());
-            proyectoDTO.setCantEmpleados(proyectoDTODetalles.getCantEmpleados());
-            proyectoDTO.setFechaInicio(proyectoDTODetalles.getFechaInicio());
-            proyectoDTO.setFechaTerminoPactada(proyectoDTODetalles.getFechaTerminoPactada());
-            proyectoDTO.setFechaTerminoReal(proyectoDTODetalles.getFechaTerminoReal());
-            proyectoDTO.setEstado(proyectoDTODetalles.getEstado());
+
+            // Verificar cada campo antes de actualizarlo
+            if (proyectoDTODetalles.getNombreProyecto() != null) {
+                proyectoDTO.setNombreProyecto(proyectoDTODetalles.getNombreProyecto());
+            }
+            if (proyectoDTODetalles.getComuna() != null) {
+                proyectoDTO.setComuna(proyectoDTODetalles.getComuna());
+            }
+            if (proyectoDTODetalles.getCantEmpleados() != null) {
+                proyectoDTO.setCantEmpleados(proyectoDTODetalles.getCantEmpleados());
+            }
+            if (proyectoDTODetalles.getFechaInicio() != null) {
+                proyectoDTO.setFechaInicio(proyectoDTODetalles.getFechaInicio());
+            }
+            if (proyectoDTODetalles.getFechaTerminoPactada() != null) {
+                proyectoDTO.setFechaTerminoPactada(proyectoDTODetalles.getFechaTerminoPactada());
+            }
+            if (proyectoDTODetalles.getFechaTerminoReal() != null) {
+                proyectoDTO.setFechaTerminoReal(proyectoDTODetalles.getFechaTerminoReal());
+            }
+            if (proyectoDTODetalles.getEstado() != null) {
+                proyectoDTO.setEstado(proyectoDTODetalles.getEstado());
+            }
+
             proyectoDTO updatedProyectoDTO = proyectoService.save(proyectoDTO);
             return ResponseEntity.ok(updatedProyectoDTO);
         } else {
