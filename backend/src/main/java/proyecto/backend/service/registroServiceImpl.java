@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 import proyecto.backend.DTO.registroDTO;
+import proyecto.backend.entity.proyecto;
 import proyecto.backend.entity.registro;
 import proyecto.backend.repository.registroRepository;
 import proyecto.backend.DTO.proyectoDTO;
