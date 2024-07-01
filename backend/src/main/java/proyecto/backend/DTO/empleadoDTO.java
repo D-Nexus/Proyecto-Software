@@ -9,6 +9,7 @@ import java.util.Date;
 public class empleadoDTO {
 
     private Long id;
+    private String rut;
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
@@ -20,6 +21,7 @@ public class empleadoDTO {
     public empleado toEntity() {
         empleado e = new empleado();
         e.setId(this.getId());
+        e.setRut(this.getRut());
         e.setNombre(this.getNombre());
         e.setApellidoPaterno(this.getApellidoPaterno());
         e.setApellidoMaterno(this.getApellidoMaterno());

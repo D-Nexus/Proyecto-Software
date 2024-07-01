@@ -12,7 +12,6 @@ public class registroDTO {
     private String porcentaje;
     private Double montoBono;
     private String estado;
-    private String fechaPago;
     private empleadoDTO empleado;
     private proyectoDTO proyecto;
 }

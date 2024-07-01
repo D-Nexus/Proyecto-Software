@@ -78,7 +78,6 @@ public class registroServiceImpl implements IregistroService {
             registro.setPorcentaje("10%");
             registro.setRecibeBono("Si");
             registro.setEstado("Aprobado");
-            registro.setFechaPago(LocalDate.now());
         } else if (fechaTerminoReal.isBefore(fechaTerminoPactada) && estado.equals("terminado")) {
             // Fecha de entrega es anticipada se agrega un bono del 25%
             bono = sueldoBruto.multiply(new BigDecimal("0.25"));
@@ -86,7 +85,6 @@ public class registroServiceImpl implements IregistroService {
             registro.setPorcentaje("25%");
             registro.setRecibeBono("Si");
             registro.setEstado("Aprobado");
-            registro.setFechaPago(LocalDate.now());
         } else if (fechaTerminoReal.isAfter(fechaTerminoPactada)) {
             // Fecha de entrega es posterior a la fecha pactada, no aplica bonificación
             bono = BigDecimal.ZERO;
@@ -94,7 +92,6 @@ public class registroServiceImpl implements IregistroService {
             registro.setPorcentaje("0%");
             registro.setRecibeBono("No");
             registro.setEstado("Rechazado");
-            registro.setFechaPago(LocalDate.now());
         }
 
         // Condición para bonificación adicional por antigüedad

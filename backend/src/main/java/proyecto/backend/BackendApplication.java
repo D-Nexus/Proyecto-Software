@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 //import proyecto.backend.repository.UserRepository;
-import proyecto.backend.entity.PermissionEntity;
+//import proyecto.backend.entity.PermissionEntity;
 //import proyecto.backend.entity.UserEntity;
 //import proyecto.backend.entity.RoleEnum;
 //import proyecto.backend.entity.RoleEntity;

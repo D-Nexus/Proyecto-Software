@@ -34,7 +34,6 @@ public class pagosController {
         registro.setPorcentaje("");
         registro.setMontoBono(0.0);
         registro.setEstado("");
-        registro.setFechaPago("");
 
         empleadoDTO empleado = empleadoService.findByIdREST(3L);
         proyectoDTO proyecto = proyectoService.findByIdREST(7L);

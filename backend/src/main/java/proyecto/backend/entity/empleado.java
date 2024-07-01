@@ -22,6 +22,7 @@ public class empleado {
     private Long id; //PK
 
     //Columnas
+    private String rut;
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
@@ -37,6 +38,7 @@ public class empleado {
     public empleadoDTO toDTO(){
         empleadoDTO empleadoDTO = new empleadoDTO();
         empleadoDTO.setId(id);
+        empleadoDTO.setRut(rut);
         empleadoDTO.setNombre(nombre);
         empleadoDTO.setApellidoPaterno(apellidoPaterno);
         empleadoDTO.setApellidoMaterno(apellidoMaterno);

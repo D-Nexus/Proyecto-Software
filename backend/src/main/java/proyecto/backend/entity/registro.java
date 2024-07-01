@@ -23,7 +23,6 @@ public class registro {
     private String RecibeBono;
     private String porcentaje;
     private double montoBono;
-    private LocalDate fechaPago;
     private String estado;
 
 
@@ -44,7 +43,6 @@ public class registro {
         RegistroDTO.setPorcentaje(this.getPorcentaje());
         RegistroDTO.setMontoBono(this.getMontoBono());
         RegistroDTO.setEstado(this.getEstado());
-        RegistroDTO.setFechaPago(this.getFechaPago());
         RegistroDTO.setEmpleado(this.empleado.toDTO());
         RegistroDTO.setProyecto(this.proyecto.toDTO());
         return RegistroDTO;

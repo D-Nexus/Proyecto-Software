@@ -38,6 +38,9 @@ public class empleadoController {
             empleadoDTO EmpleadoDTO = optionalempleadoDTO.get();
 
             // Verificar cada campo antes de actualizarlo
+            if (EmpleadoDTODetalles.getRut() != null) {
+                EmpleadoDTO.setRut(EmpleadoDTODetalles.getRut());
+            }
             if (EmpleadoDTODetalles.getNombre() != null) {
                 EmpleadoDTO.setNombre(EmpleadoDTODetalles.getNombre());
             }

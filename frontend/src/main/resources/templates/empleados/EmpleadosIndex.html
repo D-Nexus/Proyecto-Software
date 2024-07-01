@@ -103,6 +103,7 @@
         <thead>
         <tr>
             <th>ID</th>
+            <th>RUT</th>
             <th>NOMBRE</th>
             <th>APELLIDO PATERNO</th>
             <th>APELLIDO MATERNO</th>
@@ -116,6 +117,7 @@
         <tbody>
         <tr th:each="empleado:${empleados}">
             <td th:text="${empleado.id}"></td>
+            <td th:text="${empleado.rut}"></td>
             <td th:text="${empleado.nombre}"></td>
             <td th:text="${empleado.apellidoPaterno}"></td>
             <td th:text="${empleado.apellidoMaterno}"></td>
