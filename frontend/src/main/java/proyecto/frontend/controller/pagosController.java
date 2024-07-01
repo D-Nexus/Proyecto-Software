@@ -1,6 +1,5 @@
 package proyecto.frontend.controller;
 
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +14,8 @@ import proyecto.frontend.service.IproyectoService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/api/registros")
-public class registroController{
-
+@RequestMapping("/api/pagos")
+public class pagosController {
     @Autowired
     private IregistroService registroService;
 
@@ -46,22 +44,6 @@ public class registroController{
         registroDTO RegistroAMostrar = registroService.CalcularBonoREST(registro);
         model.addAttribute("Bonos",RegistroAMostrar);
 
-        return "registros/RegistrosIndex";
+        return "pagos/PagosIndex";
     }
-
-    @GetMapping("/allData")
-    public String getAllData(Model model) {
-        List<registroDTO> allData = registroService.findAllREST();
-        model.addAttribute("allData", allData);
-        return "registros/RegistrosIndex";
-    }
-
-    @GetMapping("/specificData")
-    public String getSpecificData(Model model) {
-        List<registroDTO> specificData = registroService.findAllREST();
-        model.addAttribute("specificData", specificData);
-        return "registros/RegistrosIndex";
-    }
-
 }
-

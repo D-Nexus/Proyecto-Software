@@ -5,6 +5,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import proyecto.frontend.DTO.proyectoDTO;
 import proyecto.frontend.DTO.registroDTO;
 
 import java.io.IOException;
@@ -53,8 +54,6 @@ public class registroServiceImpl implements IregistroService{
             return null;
         }
     }
-
-
     @Override
     public registroDTO updateREST(Long id, registroDTO registroDTO) {
         try {
