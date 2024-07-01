@@ -1,5 +1,5 @@
 package proyecto.backend.config;
-
+/*
 import proyecto.backend.service.UserDetailServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,14 +31,14 @@ import java.util.List;
 public class SecurityConfig {
 
 
-    @Bean
+     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http -> {
-                    // Cofnigurar los endpoints privados
+                    // Configurar los endpoints privados
                     http.requestMatchers(HttpMethod.GET, "/api/proyectos/getAll").hasAnyRole("ADMIN", "USER");
                     http.requestMatchers(HttpMethod.GET, "/api/proyectos/SearchByID/*").hasAnyRole("ADMIN", "USER");
                     http.requestMatchers(HttpMethod.POST, "/api/proyectos/create").hasAnyRole("ADMIN", "USER");
@@ -59,7 +59,7 @@ public class SecurityConfig {
                     http.anyRequest().denyAll();
                 })
                 .build();
-    }
+    } */
 
 //    @Bean
 //    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -70,7 +70,7 @@ public class SecurityConfig {
 //                .build();
 //    }
 
-    @Bean
+    /*@Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
@@ -87,4 +87,5 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-}
+
+} */

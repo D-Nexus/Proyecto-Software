@@ -1,5 +1,5 @@
 package proyecto.backend.service;
-
+/*
 import proyecto.backend.entity.UserEntity;
 import proyecto.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,3 +43,5 @@ public class UserDetailServiceImpl implements UserDetailsService {
                 authorityList);
     }
 }
+
+ */
