@@ -2,24 +2,30 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta  http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <!-- Nuestro css-->
     <link rel="stylesheet" type="text/css" th:href="@{/css/diseño_menu.css}">
 </head>
 <body>
-    <div class="wrapper">
-            <form action="">
-                <img th:src="@{/img/logo.png}" alt="Logo de la corporacion(ficticio)" class="logo">
-                <h1>INGCO</h1>
-            </form>
-            <div class="button-container">
-                <button type="submit" class="btn">Empleado</button>
-                <button type="submit" class="btn">Proyecto</button>
-                <button type="submit" class="btn">Pagos</button>
-            </div>
+<div class="wrapper">
+    <form action="">
+        <img th:src="@{/img/logo.png}" alt="Logo de la corporacion(ficticio)" class="logo">
+        <h1>INGCO</h1>
+    </form>
+    <div class="button-container">
+        <button type="button" class="btn" onclick="redirectTo('/api/empleados/Pagina')">Empleado</button>
+        <button type="button" class="btn" onclick="redirectTo('/api/proyectos/Pagina')">Proyecto</button>
+        <button type="button" class="btn" onclick="redirectTo('/api/registros/Pagina')">Pagos</button>
     </div>
+</div>
+<script>
+    function redirectTo(url) {
+        window.location.href = url;
+    }
+</script>
 </body>
 </html>
+

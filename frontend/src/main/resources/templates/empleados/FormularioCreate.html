@@ -6,11 +6,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
+    <script src="/validationEmpleados.js"></script>
 </head>
 <body>
 <div class="container mt-4">
     <div class="col-sm-6">
-        <form th:action="@{/api/empleados/CreateEmpleado}" th:object="${empleadoCreate}" method="post" enctype="application/x-www-form-urlencoded">
+        <form th:action="@{/api/empleados/CreateEmpleado}" th:object="${empleadoCreate}" method="post" enctype="application/x-www-form-urlencoded" onsubmit="return validateForm()">
             <div class="card">
                 <div class="card-header">
                     <h3>Nuevo Empleado</h3>
@@ -33,7 +34,15 @@
 
                     <div class="form-group">
                         <label for="tipoCargo">Tipo de Cargo</label>
-                        <input type="text" th:field="*{tipoCargo}" class="form-control" id="tipoCargo"/>
+                        <select th:field="*{tipoCargo}" class="form-control" id="tipoCargo">
+                            <option value="">Selecciona un tipo de cargo</option>
+                            <option value="Empleados de planta">Empleados de planta</option>
+                            <option value="Ingenieros Civiles de Obras">Ingenieros Civiles de Obras</option>
+                            <option value="Ingenieros en Construcción">Ingenieros en Construcción</option>
+                            <option value="Arquitectos">Arquitectos</option>
+                            <option value="Personal Administrativo">Personal Administrativo</option>
+                            <option value="Personal contratado a plazo fijo">Personal contratado a plazo fijo</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
@@ -43,7 +52,14 @@
 
                     <div class="form-group">
                         <label for="tipoContrato">Tipo de Contrato</label>
-                        <input type="text" th:field="*{tipoContrato}" class="form-control" id="tipoContrato"/>
+                        <select th:field="*{tipoContrato}" class="form-control" id="tipoContrato">
+                            <option value="">Selecciona un tipo de contrato</option>
+                            <option value="Contrato por obra o labor">Contrato por obra o labor</option>
+                            <option value="Contrato de trabajo a término fijo">Contrato de trabajo a término fijo</option>
+                            <option value="Contrato de trabajo a término indefinido">Contrato de trabajo a término indefinido</option>
+                            <option value="Contrato de aprendizaje">Contrato de aprendizaje</option>
+                            <option value="Contrato temporal, ocasional o accidental">Contrato temporal, ocasional o accidental</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
@@ -53,6 +69,7 @@
                 </div>
                 <div class="card-footer">
                     <input type="submit" value="Guardar" class="btn btn-success"/>
+                    <button type="button" class="btn btn-secondary" onclick="history.back()">Volver</button>
                 </div>
             </div>
         </form>
@@ -60,3 +77,4 @@
 </div>
 </body>
 </html>
+

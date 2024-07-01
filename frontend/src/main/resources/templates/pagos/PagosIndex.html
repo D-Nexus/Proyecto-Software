@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+
     <meta charset="UTF-8">
     <title>Mantenedor Pagos API REST</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
     <style>
         body {
             background-image: url('https://wallpaperaccess.com/full/345781.jpg'); /* Reemplaza la URL con la de tu imagen de fondo */
@@ -53,7 +55,6 @@
             border-radius: 4px;
             cursor: pointer;
             margin: 10px;
-
         }
         #filtro{
             background-color: indianred;
@@ -72,7 +73,6 @@
             cursor: pointer;
             margin-right: 2px;
         }
-
     </style>
 </head>
 <body>
@@ -82,11 +82,11 @@
         <button class="search-button" onclick="filterTable()" id="buscar">Buscar</button>
         <button class="search-button" onclick="clearFilter()" id="filtro">Eliminar Filtro</button>
     </div>
-    <button class="search-button" onclick="clearFilter()">Informe 1</button>
-    <button class="search-button" onclick="clearFilter()">Informe 2</button>
-    <button class="search-button" onclick="clearFilter()">Informe 3</button>
-    <br>
-    <br>
+    <button class="search-button" onclick="showAll()">Mostrar Todo</button>
+    <button class="search-button" onclick="filterByBono(10)">Porcentaje 10%</button>
+    <button class="search-button" onclick="filterByBono(25)">Porcentaje 25%</button>
+    <button class="search-button" onclick="filterByBono(45)">Porcentaje 45%</button>
+    <br><br>
     <table class="table">
         <thead>
         <tr>
@@ -114,48 +114,21 @@
             <td th:text="${registro.fechaPago}"></td>
             <td th:text="${registro.proyecto.nombreProyecto}"></td>
             <td th:text="${registro.proyecto.comuna}"></td>
+        </tr>
         </tbody>
     </table>
 </div>
 <div class="volver-button">
-    <a href="http://localhost:8081/api/home/" class="btn btn-secondary btn-lg btn-dark">Volver</a>
+    <button class="search-button" onclick="exportToExcel()">Descargar</button>
+    <a href="http://localhost:8081/api/home" class="btn btn-secondary btn-lg btn-dark">Volver</a>
 </div>
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script>
-    function filterTable() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("searchInput");
-        filter = input.value.toUpperCase();
-        table = document.querySelector(".table");
-        tr = table.getElementsByTagName("tr");
-
-        for (i = 1; i < tr.length; i++) { // Comienza desde 1 para omitir la primera fila (títulos)
-            var found = false;
-            for (var j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
-                td = tr[i].getElementsByTagName("td")[j];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        found = true;
-                        break;
-                    }
-                }
-            }
-            tr[i].style.display = found ? "" : "none";
-        }
-    }
-
-    function clearFilter() {
-        var input = document.getElementById("searchInput");
-        input.value = "";
-        filterTable(); // Llama a la función filterTable para mostrar todos los elementos nuevamente
-    }
-</script>
 <footer>
     <div class="copyright">
         &copy; 2024 Equipo6. Todos los derechos reservados.
     </div>
 </footer>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/PagosFiltro.js"></script>
 </body>
 </html>

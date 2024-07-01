@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Mantenedor Proyectos API REST</title>
+    <title>Mantenedor Registros API REST</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body {
@@ -96,39 +96,35 @@
         <button class="search-button" onclick="filterTable()" id="buscar">Buscar</button>
         <button class="search-button" onclick="clearFilter()" id="filtro">Eliminar Filtro</button>
     </div>
-    <a th:href="@{Formulario}" class="btn btn-primary">Nuevo</a>
-    <br>
-    <br>
-    <table class="table">
+     <table class="table">
         <thead>
         <tr>
             <th>Id</th>
-            <th>NombreProyecto</th>
-            <th>COMUNA</th>
-            <th>CantEmpleados</th>
-            <th>FechaInicio</th>
-            <th>FechaTerminoPactada</th>
-            <th>FechaTerminoReal</th>
-            <th>Estado</th>
-            <th>EDITAR/ELIMINAR</th>
+            <th>Nombre Empleado</th>
+            <th>Apellido P.</th>
+            <th>Apellido M.</th>
+            <th>Nombre Proyecto</th>
+            <th>Comuna</th>
+            <th>Estado Proyecto</th>
+            <th>Porcentaje</th>
+            <th>Monto de bono</th>
+            <th>Estado Pago</th>
+            <th>Fecha de pago</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="proyecto:${proyectos}">
-            <td th:text="${proyecto.id}"></td>
-            <td th:text="${proyecto.nombreProyecto}"></td>
-            <td th:text="${proyecto.comuna}"></td>
-            <td th:text="${proyecto.cantEmpleados}"></td>
-            <td th:text="${proyecto.fechaInicio}"></td>
-            <td th:text="${proyecto.fechaTerminoPactada}"></td>
-            <td th:text="${proyecto.fechaTerminoReal}"></td>
-            <td th:text="${proyecto.estado}"></td>
-            <td>
-                <!-- Botón para editar -->
-                <a class="btn btn-warning" th:href="@{|/api/proyectos/editar/${proyecto.id}|}" id="editarBtn">Editar</a>
-                <!-- Botón para eliminar -->
-                <a class="btn btn-danger" th:onclick="'javascript:FuncionEliminar2(\'' + ${proyecto.id} + '\');'" id="eliminarBtn">Eliminar</a>
-            </td>
+        <tr th:each="registro:${registros}">
+            <td th:text="${registro.id}"></td>
+            <td th:text="${registro.empleado.nombre}"></td>
+            <td th:text="${registro.empleado.apellidoPaterno}"></td>
+            <td th:text="${registro.empleado.apellidoMaterno}"></td>
+            <td th:text="${registro.proyecto.nombreProyecto}"></td>
+            <td th:text="${registro.proyecto.comuna}"></td>
+            <td th:text="${registro.proyecto.estado}"></td>
+            <td th:text="${registro.porcentaje}"></td>
+            <td th:text="${registro.montoBono}"></td>
+            <td th:text="${registro.estado}"></td>
+            <td th:text="${registro.fechaPago}"></td>
         </tr>
         </tbody>
     </table>
@@ -139,7 +135,7 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="/FuncionEliminar2.js"></script>
+<script src="/FuncionEliminar3.js"></script>
 <script>
     function filterTable() {
         var input, filter, table, tr, td, i, txtValue;

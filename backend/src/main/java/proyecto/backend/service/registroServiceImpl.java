@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 import proyecto.backend.DTO.registroDTO;
+import proyecto.backend.entity.proyecto;
 import proyecto.backend.entity.registro;
 import proyecto.backend.repository.registroRepository;
 import proyecto.backend.DTO.proyectoDTO;
@@ -94,6 +95,7 @@ public class registroServiceImpl implements IregistroService {
             registro.setRecibeBono("No");
             registro.setEstado("Rechazado");
             registro.setFechaPago(LocalDate.now());
+            throw new IllegalArgumentException("La fecha de término real es posterior a la fecha pactada, no recibe bono");
         }
 
         // Condición para bonificación adicional por antigüedad
