@@ -45,7 +45,7 @@ public class registroController{
         registroDTO RegistroAMostrar = registroService.CalcularBonoREST(registro);
         model.addAttribute("Bonos",RegistroAMostrar);
 
-        return "registros/registrosPrueba";
+        return "pagos/PagosIndex";
     }
 }
 
