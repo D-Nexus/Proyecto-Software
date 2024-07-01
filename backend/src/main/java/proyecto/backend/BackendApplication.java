@@ -4,11 +4,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import proyecto.backend.repository.UserRepository;
+//import proyecto.backend.repository.UserRepository;
 import proyecto.backend.entity.PermissionEntity;
-import proyecto.backend.entity.UserEntity;
-import proyecto.backend.entity.RoleEnum;
-import proyecto.backend.entity.RoleEntity;
+//import proyecto.backend.entity.UserEntity;
+//import proyecto.backend.entity.RoleEnum;
+//import proyecto.backend.entity.RoleEntity;
 
 import java.util.List;
 import java.util.Set;
@@ -20,10 +20,12 @@ public class BackendApplication {
 		SpringApplication.run(BackendApplication.class, args);
 	}
 
+	/*
 	@Bean
 	CommandLineRunner init(UserRepository userRepository) {
 		return args -> {
 			/* Create PERMISSIONS */
+	/*
 			PermissionEntity createPermission = PermissionEntity.builder()
 					.name("CREATE")
 					.build();
@@ -45,6 +47,7 @@ public class BackendApplication {
 					.build();
 
 			/* Create ROLES */
+	/*
 			RoleEntity roleAdmin = RoleEntity.builder()
 					.roleEnum(RoleEnum.ADMIN)
 					.permissionList(Set.of(createPermission, readPermission, updatePermission, deletePermission))
@@ -56,6 +59,7 @@ public class BackendApplication {
 					.build();
 
 			/* CREATE USERS */
+	/*
 			UserEntity userAdmin = UserEntity.builder()
 					.username("ADMIN")
 					.password("$2a$10$cMY29RPYoIHMJSuwRfoD3eQxU1J5Rww4VnNOUOAEPqCBshkNfrEf6")
@@ -78,5 +82,5 @@ public class BackendApplication {
 
 			userRepository.saveAll(List.of(userAdmin, userFinanzas));
 		};
-	}
+	} */
 }
