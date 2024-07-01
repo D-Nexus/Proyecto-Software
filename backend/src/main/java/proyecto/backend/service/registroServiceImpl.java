@@ -94,6 +94,7 @@ public class registroServiceImpl implements IregistroService {
             registro.setRecibeBono("No");
             registro.setEstado("Rechazado");
             registro.setFechaPago(LocalDate.now());
+            throw new IllegalArgumentException("La fecha de término real es posterior a la fecha pactada, no recibe bono");
         }
 
         // Condición para bonificación adicional por antigüedad
