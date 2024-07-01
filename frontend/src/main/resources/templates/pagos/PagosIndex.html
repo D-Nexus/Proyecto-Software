@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Mantenedor Empleados API REST</title>
+    <title>Mantenedor Pagos API REST</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body {
@@ -53,24 +53,9 @@
             border-radius: 4px;
             cursor: pointer;
             margin: 10px;
-        }
 
-        #eliminarBtn {
-            border-radius: 10px;
-            padding-right: 5px;
-            padding-left: 5px;
-            text-align: center; /* Alinear el texto al centro */
-            font-size: 14px;
         }
-
-        #editarBtn {
-            border-radius: 10px;
-            padding-right: 5px;
-            padding-left: 5px;
-            text-align: center; /* Alinear el texto al centro */
-            font-size: 14px;
-        }
-        #filtro {
+        #filtro{
             background-color: indianred;
             padding: 8px 25px;
             color: #fff;
@@ -87,6 +72,7 @@
             cursor: pointer;
             margin-right: 2px;
         }
+
     </style>
 </head>
 <body>
@@ -96,7 +82,9 @@
         <button class="search-button" onclick="filterTable()" id="buscar">Buscar</button>
         <button class="search-button" onclick="clearFilter()" id="filtro">Eliminar Filtro</button>
     </div>
-    <a th:href="@{Formulario}" class="btn btn-primary">Nuevo</a>
+    <button class="search-button" onclick="clearFilter()">Informe 1</button>
+    <button class="search-button" onclick="clearFilter()">Informe 2</button>
+    <button class="search-button" onclick="clearFilter()">Informe 3</button>
     <br>
     <br>
     <table class="table">
@@ -107,29 +95,25 @@
             <th>APELLIDO PATERNO</th>
             <th>APELLIDO MATERNO</th>
             <th>TIPO DE CARGO</th>
-            <th>SUELDO BRUTO</th>
-            <th>TIPO DE CONTRATO</th>
-            <th>FECHA DE INGRESO</th>
-            <th>EDITAR/ELIMINAR</th>
+            <th>PORCENTAJE</th>
+            <th>MONTO DE BONO</th>
+            <th>FECHA DE PAGO</th>
+            <th>NOMBRE PROYECTO</th>
+            <th>COMUNA</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="empleado:${empleados}">
-            <td th:text="${empleado.id}"></td>
-            <td th:text="${empleado.nombre}"></td>
-            <td th:text="${empleado.apellidoPaterno}"></td>
-            <td th:text="${empleado.apellidoMaterno}"></td>
-            <td th:text="${empleado.tipoCargo}"></td>
-            <td th:text="${empleado.sueldoBruto}"></td>
-            <td th:text="${empleado.tipoContrato}"></td>
-            <td th:text="${empleado.fechaIngreso}"></td>
-            <td>
-                <!-- Botón para editar -->
-                <a class="btn btn-warning" th:href="@{|/api/empleados/editar/${empleado.id}|}" id="editarBtn">Editar</a>
-                <!-- Botón para eliminar -->
-                <a class="btn btn-danger" th:onclick="'javascript:FuncionEliminar(\'' + ${empleado.id} + '\');'" id="eliminarBtn">Eliminar</a>
-            </td>
-        </tr>
+        <tr th:each="registro:${registros}">
+            <td th:text="${registro.id}"></td>
+            <td th:text="${registro.empleado.nombre}"></td>
+            <td th:text="${registro.empleado.apellidoPaterno}"></td>
+            <td th:text="${registro.empleado.apellidoMaterno}"></td>
+            <td th:text="${registro.empleado.tipoCargo}"></td>
+            <td th:text="${registro.porcentaje}"></td>
+            <td th:text="${registro.montoBono}"></td>
+            <td th:text="${registro.fechaPago}"></td>
+            <td th:text="${registro.proyecto.nombreProyecto}"></td>
+            <td th:text="${registro.proyecto.comuna}"></td>
         </tbody>
     </table>
 </div>
@@ -138,7 +122,6 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="/FuncionEliminar.js"></script>
 <script>
     function filterTable() {
         var input, filter, table, tr, td, i, txtValue;
