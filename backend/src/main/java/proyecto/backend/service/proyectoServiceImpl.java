@@ -45,7 +45,9 @@ public class proyectoServiceImpl implements IproyectoService {
 
     public void deleteById(Long Id) {
         Long Registro_a_eliminar = RegistroRepository.findRegistroIdByProyectoId(Id);
-        RegistroRepository.deleteById(Registro_a_eliminar);
+        if (Registro_a_eliminar != null){
+            RegistroRepository.deleteById(Registro_a_eliminar);
+        }
         ProyectoRepository.deleteById(Id);
     }
 }
