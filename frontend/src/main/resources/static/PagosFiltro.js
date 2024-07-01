@@ -53,4 +53,15 @@ function filterByBono(percentage) {
             }
         }
     }
+
+}
+function exportToExcel() {
+    const filename = 'reporte_pagos.xlsx';
+    const table = document.querySelector('.table');
+    const wsData = XLSX.utils.table_to_sheet(table);
+
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, wsData, 'Pagos');
+
+    XLSX.writeFile(wb, filename);
 }
