@@ -60,9 +60,9 @@ public class registroServiceImpl implements IregistroService {
         LocalDate fechaInicioProyecto = proyecto.getFechaInicio();
         LocalDate fechaTerminoPactada = proyecto.getFechaTerminoPactada();
         LocalDate fechaTerminoReal = proyecto.getFechaTerminoReal();
-        String estado = proyecto.getEstado();
+        String estado = proyecto.getEstado().toLowerCase();
 
-        if (fechaIngresoEmpleado == null || fechaInicioProyecto == null || fechaTerminoPactada == null || fechaTerminoReal == null || estado == "Terminado") {
+        if (fechaIngresoEmpleado == null || fechaInicioProyecto == null || fechaTerminoPactada == null || fechaTerminoReal == null || estado == "terminado") {
             throw new IllegalArgumentException("Error hay datos que no existen");
         }
 
@@ -78,7 +78,7 @@ public class registroServiceImpl implements IregistroService {
             registro.setRecibeBono("Si");
             registro.setEstado("Aprobado");
             registro.setFechaPago(LocalDate.now());
-        } else if (fechaTerminoReal.isBefore(fechaTerminoPactada) && estado.equals("Terminado")) {
+        } else if (fechaTerminoReal.isBefore(fechaTerminoPactada) && estado.equals("terminado")) {
             // Fecha de entrega es anticipada se agrega un bono del 25%
             bono = sueldoBruto.multiply(new BigDecimal("0.25"));
             registro.setMontoBono(Double.valueOf(String.valueOf(bono)));
