@@ -91,13 +91,13 @@
         <thead>
         <tr>
             <th>ID</th>
+            <th>RUT</th>
             <th>NOMBRE</th>
             <th>APELLIDO PATERNO</th>
             <th>APELLIDO MATERNO</th>
             <th>TIPO DE CARGO</th>
             <th>PORCENTAJE</th>
             <th>MONTO DE BONO</th>
-            <th>FECHA DE PAGO</th>
             <th>NOMBRE PROYECTO</th>
             <th>COMUNA</th>
         </tr>
@@ -105,13 +105,13 @@
         <tbody>
         <tr th:each="registro:${registros}">
             <td th:text="${registro.id}"></td>
+            <td th:text="${registro.empleado.rut}"></td>
             <td th:text="${registro.empleado.nombre}"></td>
             <td th:text="${registro.empleado.apellidoPaterno}"></td>
             <td th:text="${registro.empleado.apellidoMaterno}"></td>
             <td th:text="${registro.empleado.tipoCargo}"></td>
             <td th:text="${registro.porcentaje}"></td>
             <td th:text="${registro.montoBono}"></td>
-            <td th:text="${registro.fechaPago}"></td>
             <td th:text="${registro.proyecto.nombreProyecto}"></td>
             <td th:text="${registro.proyecto.comuna}"></td>
         </tr>

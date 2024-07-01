@@ -43,7 +43,7 @@ function filterByBono(percentage) {
     tr = table.getElementsByTagName("tr");
 
     for (var i = 1; i < tr.length; i++) { // Comienza desde 1 para omitir la primera fila (títulos)
-        td = tr[i].getElementsByTagName("td")[5]; // Índice 5 corresponde a la columna de porcentaje de bono
+        td = tr[i].getElementsByTagName("td")[6]; // Índice 5 corresponde a la columna de porcentaje de bono
         if (td) {
             porcentaje = parseFloat(td.textContent || td.innerText);
             if (porcentaje === percentage) {
