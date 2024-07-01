@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Mantenedor Empleados API REST</title>
+    <title>Mantenedor Proyectos API REST</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body {
@@ -18,7 +18,7 @@
             border: 2px solid #000; /* Borde sólido de color negro (#000) */
             border-radius: 10px; /* Borde curvado */
             width: 80%; /* Ancho del contenedor */
-            max-width: 1200px; /* Ancho máximo del contenedor */
+            max-width: 1500px; /* Ancho máximo del contenedor */
             margin: 30px auto; /* Centrar el contenedor en la página */
         }
         .volver-button {
@@ -52,6 +52,7 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            margin: 10px;
         }
 
         #eliminarBtn {
@@ -69,14 +70,31 @@
             text-align: center; /* Alinear el texto al centro */
             font-size: 14px;
         }
+        #filtro{
+            background-color: indianred;
+            padding: 8px 25px;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #buscar{
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 2px;
+        }
     </style>
 </head>
 <body>
 <div class="container mt-4">
     <div class="search-bar">
         <input type="text" class="search-input" id="searchInput" placeholder="Buscar por nombre, apellido, tipo de cargo, Etc">
-        <button class="search-button" onclick="filterTable()">Buscar'</button>
-        <button class="search-button" onclick="clearFilter()">Eliminar Filtro</button>
+        <button class="search-button" onclick="filterTable()" id="buscar">Buscar</button>
+        <button class="search-button" onclick="clearFilter()" id="filtro">Eliminar Filtro</button>
     </div>
     <a th:href="@{Formulario}" class="btn btn-primary">Nuevo</a>
     <br>
