@@ -39,6 +39,9 @@ public class proyectoServiceImpl implements IproyectoService {
     }
 
     public proyectoDTO save(proyectoDTO Proyectodto) {
+        if (containsNumber(Proyectodto.getNombreProyecto()) || containsNumber(Proyectodto.getComuna()) || containsNumber(Proyectodto.getEstado())) {
+            throw new IllegalArgumentException("No puede contener números.");
+        }
         proyecto GuardarProyecto = ProyectoRepository.save(Proyectodto.toEntity()); //Convertir proyectoDTO a proyecto con el metodo toEntity
         return GuardarProyecto.toDTO(); // Se devuelve convirtiendo el proyecto a DTO
     }
@@ -49,5 +52,8 @@ public class proyectoServiceImpl implements IproyectoService {
             RegistroRepository.deleteById(Registro_a_eliminar);
         }
         ProyectoRepository.deleteById(Id);
+    }
+    private boolean containsNumber(String str) {
+        return str != null && str.matches(".*\\d.*");
     }
 }

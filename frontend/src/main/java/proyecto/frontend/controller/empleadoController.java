@@ -12,6 +12,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/api/empleados")
+@CrossOrigin(origins = "http://localhost:8081")
 public class empleadoController{
 
     @Autowired

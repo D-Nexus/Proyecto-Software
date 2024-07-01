@@ -39,6 +39,9 @@ public class empleadoServiceImpl implements IempleadoService{
     }
 
     public empleadoDTO save(empleadoDTO Empleadodto) {
+        if (containsNumber(Empleadodto.getNombre()) || containsNumber(Empleadodto.getApellidoMaterno()) || containsNumber(Empleadodto.getApellidoPaterno()) || containsNumber(Empleadodto.getTipoCargo()) || containsNumber(Empleadodto.getTipoContrato())) {
+            throw new IllegalArgumentException("No puede contener números.");
+        }
         empleado GuardarEmpleado = EmpleadoRepository.save(Empleadodto.toEntity()); //Convertir empleadoDTO a empleado con el metodo toEntity
         return GuardarEmpleado.toDTO(); // Se devuelve convirtiendo el empleado a DTO
     }
@@ -51,5 +54,7 @@ public class empleadoServiceImpl implements IempleadoService{
         EmpleadoRepository.deleteById(Id);
     }
 
-
+    private boolean containsNumber(String str) {
+        return str != null && str.matches(".*\\d.*");
+    }
 }
