@@ -2,6 +2,7 @@ package proyecto.frontend.service;
 
 import proyecto.frontend.DTO.proyectoDTO;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 public interface IproyectoService {
@@ -15,4 +16,6 @@ public interface IproyectoService {
     public proyectoDTO updateREST(Long id, proyectoDTO ProyectoDTO);
 
     public proyectoDTO deleteREST(Long id);
+
+    ByteArrayInputStream generateExcelReport(String reportType);
 }

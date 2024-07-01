@@ -1,6 +1,9 @@
 package proyecto.frontend.controller;
 
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import proyecto.frontend.DTO.empleadoDTO;
 import proyecto.frontend.DTO.proyectoDTO;
 import proyecto.frontend.service.IproyectoService;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 @Controller
@@ -62,5 +66,26 @@ public class proyectoController{
         proyectoService.deleteREST(id);
         return "redirect:/api/proyectos/Pagina";
     }
-}
 
+    @GetMapping("/generateExcelReport")
+    public String generateExcelReport(Model model) {
+        List<proyectoDTO> proyectos = proyectoService.findAllREST();
+        model.addAttribute("proyectos", proyectos);
+        return "proyectos/ProyectosExcel";
+    }
+    @GetMapping("/download/{reportType}")
+    public ResponseEntity<InputStreamResource> downloadReport(@PathVariable String reportType) {
+        ByteArrayInputStream in = proyectoService.generateExcelReport(reportType);
+        if (in.available() == 0) { // Verifica si el stream está vacío
+            return ResponseEntity.noContent().build(); // Retorna un estado 204 si no hay contenido
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "attachment; filename=proyecto-report-" + reportType + ".xlsx");
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .body(new InputStreamResource(in));
+    }
+}
