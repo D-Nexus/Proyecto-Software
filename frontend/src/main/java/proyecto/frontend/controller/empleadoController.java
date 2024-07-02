@@ -58,7 +58,7 @@ public class empleadoController{
     public String editarREST(@PathVariable Long id, Model model) throws Exception {
         empleadoDTO empleado = empleadoService.findByIdREST(id);
         model.addAttribute("empleadoEditar", empleado);
-        return "Empleados/FormularioUpdate";
+        return "empleados/FormularioUpdate";
     }
 
     /*
