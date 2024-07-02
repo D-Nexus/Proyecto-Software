@@ -48,6 +48,12 @@ public class registroServiceImpl implements IregistroService {
     }
 
     public registroDTO calcularBono(registroDTO registro) {
+
+        boolean ExisteEnBD = RegistroRepository.existsByEmpleadoAndProyecto(registro.getEmpleado().getNombre(), registro.getEmpleado().getApellidoPaterno(), registro.getProyecto().getNombreProyecto());
+        if (ExisteEnBD == true) {
+            throw new IllegalArgumentException("Ya existe un registro con el mismo empleado y proyecto");
+        }
+
         empleadoDTO empleado = registro.getEmpleado();
         proyectoDTO proyecto = registro.getProyecto();
 
