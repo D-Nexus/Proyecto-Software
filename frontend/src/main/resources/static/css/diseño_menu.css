@@ -31,10 +31,11 @@ body{
 }
 .wrapper {
     width: 100%; /* Ajusta el ancho de la caja envolvente para hacer espacio para los botones más grandes */
-    max-width: 600px; /* Limita el ancho máximo */
+    max-width: 700px; /* Limita el ancho máximo */
     background: transparent;
     color: #fff;
     text-align: center;
+    align-items: center;
     padding: 50px 20px;
 
 }
@@ -42,7 +43,9 @@ body{
 .button-container {
     display: flex;
     justify-content: space-between; /* Espacio entre botones */
-    margin-top: 100px; /* Separación del contenedor de botones del resto del contenido */
+    align-items: center;
+    margin-top: 60px; /* Separación del contenedor de botones del resto del contenido */
+    width: auto;
 }
 .btn {
     font-family: "Tahoma", cursive;
