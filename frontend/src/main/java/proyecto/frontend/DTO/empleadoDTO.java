@@ -8,6 +8,7 @@ import java.util.Date;
 public class empleadoDTO {
 
     private Long id;
+    private String rut;
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;

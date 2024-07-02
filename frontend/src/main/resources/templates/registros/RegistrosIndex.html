@@ -54,22 +54,6 @@
             cursor: pointer;
             margin: 10px;
         }
-
-        #eliminarBtn {
-            border-radius: 10px;
-            padding-right: 5px;
-            padding-left: 5px;
-            text-align: center; /* Alinear el texto al centro */
-            font-size: 14px;
-        }
-
-        #editarBtn {
-            border-radius: 10px;
-            padding-right: 5px;
-            padding-left: 5px;
-            text-align: center; /* Alinear el texto al centro */
-            font-size: 14px;
-        }
         #filtro{
             background-color: indianred;
             padding: 8px 25px;
@@ -100,6 +84,7 @@
         <thead>
         <tr>
             <th>Id</th>
+            <th>Rut</th>
             <th>Nombre Empleado</th>
             <th>Apellido P.</th>
             <th>Apellido M.</th>
@@ -109,12 +94,12 @@
             <th>Porcentaje</th>
             <th>Monto de bono</th>
             <th>Estado Pago</th>
-            <th>Fecha de pago</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="registro:${registros}">
             <td th:text="${registro.id}"></td>
+            <td th:text="${registro.empleado.rut}"></td>
             <td th:text="${registro.empleado.nombre}"></td>
             <td th:text="${registro.empleado.apellidoPaterno}"></td>
             <td th:text="${registro.empleado.apellidoMaterno}"></td>
@@ -124,7 +109,6 @@
             <td th:text="${registro.porcentaje}"></td>
             <td th:text="${registro.montoBono}"></td>
             <td th:text="${registro.estado}"></td>
-            <td th:text="${registro.fechaPago}"></td>
         </tr>
         </tbody>
     </table>

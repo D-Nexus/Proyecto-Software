@@ -1,4 +1,5 @@
 function validateForm() {
+    let rut = document.getElementById('rut').value;
     let nombre = document.getElementById('nombre').value;
     let apellidoPaterno = document.getElementById('apellidoPaterno').value;
     let apellidoMaterno = document.getElementById('apellidoMaterno').value;
@@ -7,6 +8,10 @@ function validateForm() {
     let tipoContrato = document.getElementById('tipoContrato').value;
     let fechaIngreso = document.getElementById('fechaIngreso').value;
 
+    if (/\d/.test(rut)) {
+        alert('Ingrese un rut valido.');
+        return false;
+    }
     if (/\d/.test(nombre)) {
         alert('El nombre no puede contener números.');
         return false;

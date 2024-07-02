@@ -1,5 +1,5 @@
 package proyecto.backend.entity;
-
+/*
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,4 +18,4 @@ public class PermissionEntity {
 
     @Column(unique = true, nullable = false, updatable = false)
     private String name;
-}
+} */

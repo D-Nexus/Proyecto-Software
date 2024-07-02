@@ -16,7 +16,6 @@ public class registroDTO {
     private String porcentaje;
     private Double montoBono;
     private String estado;
-    private LocalDate fechaPago;
     private empleadoDTO empleado;
     private proyectoDTO proyecto;
 
@@ -27,7 +26,6 @@ public class registroDTO {
         r.setPorcentaje(this.getPorcentaje());
         r.setMontoBono(this.getMontoBono());
         r.setEstado(this.getEstado());
-        r.setFechaPago(this.getFechaPago());
         r.setEmpleado(empleado.toEntity());
         r.setProyecto(proyecto.toEntity());
         return r;

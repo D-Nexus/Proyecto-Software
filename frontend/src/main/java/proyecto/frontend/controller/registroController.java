@@ -36,7 +36,6 @@ public class registroController{
         registro.setPorcentaje("");
         registro.setMontoBono(0.0);
         registro.setEstado("");
-        registro.setFechaPago("");
 
         empleadoDTO empleado = empleadoService.findByIdREST(3L);
         proyectoDTO proyecto = proyectoService.findByIdREST(7L);
@@ -49,19 +48,6 @@ public class registroController{
         return "registros/RegistrosIndex";
     }
 
-    @GetMapping("/allData")
-    public String getAllData(Model model) {
-        List<registroDTO> allData = registroService.findAllREST();
-        model.addAttribute("allData", allData);
-        return "registros/RegistrosIndex";
-    }
-
-    @GetMapping("/specificData")
-    public String getSpecificData(Model model) {
-        List<registroDTO> specificData = registroService.findAllREST();
-        model.addAttribute("specificData", specificData);
-        return "registros/RegistrosIndex";
-    }
 
 }
 
