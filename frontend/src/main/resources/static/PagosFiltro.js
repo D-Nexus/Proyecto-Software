@@ -55,13 +55,159 @@ function filterByBono(percentage) {
     }
 
 }
-function exportToExcel() {
-    const filename = 'reporte_pagos.xlsx';
+
+function exportToExcel(columns, filename) {
     const table = document.querySelector('.table');
-    const wsData = XLSX.utils.table_to_sheet(table);
+    const rows = table.querySelectorAll('tr');
+    const data = [];
 
+    // Obtener los índices de las columnas especificadas
+    const columnIndices = [];
+    const headerCells = rows[0].querySelectorAll('th');
+    columns.forEach(column => {
+        for (let i = 0; i < headerCells.length; i++) {
+            if (headerCells[i].innerText === column) {
+                columnIndices.push(i);
+                break;
+            }
+        }
+    });
+
+    // Extraer datos de las columnas especificadas y filtrar por porcentaje 25%
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const percentageCell = cells[6]; // Índice 6 corresponde a la columna de porcentaje
+        if (percentageCell && percentageCell.innerText === '10%') {
+            const rowData = [];
+            columnIndices.forEach(index => {
+                rowData.push(cells[index].innerText);
+            });
+            data.push(rowData);
+        }
+    });
+
+    // Crear libro y hoja de trabajo
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, wsData, 'Pagos');
+    const ws = XLSX.utils.aoa_to_sheet(data);
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
 
+    // Exportar a archivo Excel
+    XLSX.writeFile(wb, filename);
+}
+
+function exportToExcel2(columns, filename) {
+    const table = document.querySelector('.table');
+    const rows = table.querySelectorAll('tr');
+    const data = [];
+
+    // Obtener los índices de las columnas especificadas
+    const columnIndices = [];
+    const headerCells = rows[0].querySelectorAll('th');
+    columns.forEach(column => {
+        for (let i = 0; i < headerCells.length; i++) {
+            if (headerCells[i].innerText === column) {
+                columnIndices.push(i);
+                break;
+            }
+        }
+    });
+
+    // Extraer datos de las columnas especificadas y filtrar por porcentaje 25%
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const percentageCell = cells[6]; // Índice 6 corresponde a la columna de porcentaje
+        if (percentageCell && percentageCell.innerText === '25%') {
+            const rowData = [];
+            columnIndices.forEach(index => {
+                rowData.push(cells[index].innerText);
+            });
+            data.push(rowData);
+        }
+    });
+
+    // Crear libro y hoja de trabajo
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.aoa_to_sheet(data);
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+    // Exportar a archivo Excel
+    XLSX.writeFile(wb, filename);
+}
+
+function exportToExcel3(columns, filename) {
+    const table = document.querySelector('.table');
+    const rows = table.querySelectorAll('tr');
+    const data = [];
+
+    // Obtener los índices de las columnas especificadas
+    const columnIndices = [];
+    const headerCells = rows[0].querySelectorAll('th');
+    columns.forEach(column => {
+        for (let i = 0; i < headerCells.length; i++) {
+            if (headerCells[i].innerText === column) {
+                columnIndices.push(i);
+                break;
+            }
+        }
+    });
+
+    // Extraer datos de las columnas especificadas y filtrar por porcentaje 25%
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const percentageCell = cells[6]; // Índice 6 corresponde a la columna de porcentaje
+        if (percentageCell && percentageCell.innerText === '45%') {
+            const rowData = [];
+            columnIndices.forEach(index => {
+                rowData.push(cells[index].innerText);
+            });
+            data.push(rowData);
+        }
+    });
+
+    // Crear libro y hoja de trabajo
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.aoa_to_sheet(data);
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+    // Exportar a archivo Excel
+    XLSX.writeFile(wb, filename);
+}
+
+function exportToExcel4(columns, filename) {
+    const table = document.querySelector('.table');
+    const rows = table.querySelectorAll('tr');
+    const data = [];
+
+    // Obtener los índices de las columnas especificadas
+    const columnIndices = [];
+    const headerCells = rows[0].querySelectorAll('th');
+    columns.forEach(column => {
+        for (let i = 0; i < headerCells.length; i++) {
+            if (headerCells[i].innerText === column) {
+                columnIndices.push(i);
+                break;
+            }
+        }
+    });
+
+    // Extraer datos de las columnas especificadas y filtrar por porcentaje 25%
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const percentageCell = cells[6]; // Índice 6 corresponde a la columna de porcentaje
+        if (percentageCell && percentageCell.innerText !== '10%') {
+            const rowData = [];
+            columnIndices.forEach(index => {
+                rowData.push(cells[index].innerText);
+            });
+            data.push(rowData);
+        }
+    });
+
+    // Crear libro y hoja de trabajo
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.aoa_to_sheet(data);
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+    // Exportar a archivo Excel
     XLSX.writeFile(wb, filename);
 }
