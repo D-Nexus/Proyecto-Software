@@ -20,14 +20,18 @@
         <button type="button" class="btn" onclick="redirectTo('/api/proyectos/Pagina')">Proyecto</button>
         <button type="button" class="btn" onclick="redirectTo('/api/pagos/Pagina')">Pagos</button>
         <button type="button" class="btn" onclick="redirectTo('/api/registros/Pagina')">Registro</button>
+        <button type="button" class="btn" onclick="cerrarSesion()">Cerrar sesión</button>
     </div>
 </div>
 <script>
     function redirectTo(url) {
         window.location.href = url;
     }
+
+    function cerrarSesion() {
+        window.open('/api/Login', '_blank');
+    }
 </script>
 </body>
 </html>
-
 

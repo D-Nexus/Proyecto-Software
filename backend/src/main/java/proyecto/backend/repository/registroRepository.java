@@ -24,4 +24,13 @@ public interface registroRepository extends JpaRepository<registro, Long> {
     @Query("UPDATE registro r SET r.empleado = NULL, r.proyecto = NULL WHERE r.id = :registroId")
     void ClearEmpleadoIdYProyectoIdByRegistroId(@Param("registroId") Long registroId);
 
+    @Query("SELECT COUNT(r) > 0 FROM registro r " +
+            "WHERE r.empleado.nombre = :nombreEmpleado " +
+            "AND r.empleado.apellidoPaterno = :apellidoEmpleado " +
+            "AND r.proyecto.nombreProyecto = :nombreProyecto")
+    boolean existsByEmpleadoAndProyecto(
+            @Param("nombreEmpleado") String nombreEmpleado,
+            @Param("apellidoEmpleado") String apellidoEmpleado,
+            @Param("nombreProyecto") String nombreProyecto
+    );
 }

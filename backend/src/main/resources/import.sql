@@ -30,17 +30,3 @@ INSERT INTO proyectos (nombre_proyecto, comuna, cant_empleados, fecha_inicio, fe
 INSERT INTO proyectos (nombre_proyecto, comuna, cant_empleados, fecha_inicio, fecha_termino_pactada, fecha_termino_real, estado) VALUES ('Centro Deportivo', 'Chillán', 60, '2019-11-15', '2021-11-30', '2021-11-25', 'Terminado');
 INSERT INTO proyectos (nombre_proyecto, comuna, cant_empleados, fecha_inicio, fecha_termino_pactada, fecha_termino_real, estado) VALUES ('Terminal de Buses', 'Arica', 70, '2022-09-10', '2024-09-15', '2024-09-10', 'En Progreso');
 
-
--- Insertar datos en la tabla Registro
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '10%', 50000, 'Aprobado', 1, 1);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '25%', 125000, 'Aprobado', 1, 2);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '45%', 225000, 'Aprobado', 3, 3);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '10%', 45000, 'Aprobado', 4, 4);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '25%', 75000, 'Aprobado', 5, 5);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '45%', 135000, 'Aprobado', 6, 6);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '10%', 50000, 'Aprobado', 7, 7);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '25%', 125000, 'Aprobado', 8, 8);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '45%', 225000, 'Aprobado', 1, 9);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '10%', 45000, 'Aprobado', 10, 10);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '25%', 75000, 'Aprobado', 11, 11);
-INSERT INTO registros (recibe_bono, porcentaje, monto_bono, estado, id_empleado, id_proyecto) VALUES ('Si', '45%', 135000, 'Aprobado', 12, 12);
