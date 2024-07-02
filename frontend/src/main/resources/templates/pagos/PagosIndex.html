@@ -119,7 +119,10 @@
     </table>
 </div>
 <div class="volver-button">
-    <button class="search-button" onclick="exportToExcel()">Descargar</button>
+    <button class="search-button" onclick="exportToExcel(['RUT', 'NOMBRE','APELLIDO PATERNO','APELLIDO MATERNO', 'PORCENTAJE'], 'informe-10.xlsx')">Descargar informe 10%</button>
+    <button class="search-button" onclick="exportToExcel2(['RUT', 'NOMBRE','APELLIDO PATERNO','APELLIDO MATERNO', 'PORCENTAJE'], 'informe-25.xlsx')">Descargar informe 25%</button>
+    <button class="search-button" onclick="exportToExcel3(['RUT', 'NOMBRE','APELLIDO PATERNO','APELLIDO MATERNO', 'PORCENTAJE'], 'informe-45.xlsx')">Descargar informe 45%</button>
+    <button class="search-button" onclick="exportToExcel4(['RUT', 'NOMBRE','APELLIDO PATERNO','APELLIDO MATERNO', 'PORCENTAJE', 'MONTO DE BONO'], 'informe25-45.xlsx')">Descargar informe 25%-45%</button>
     <a href="http://localhost:8081/api/home" class="btn btn-secondary btn-lg btn-dark">Volver</a>
 </div>
 <footer>
