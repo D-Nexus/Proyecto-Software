@@ -1,5 +1,4 @@
 function validateForm() {
-    let rut = document.getElementById('rut').value;
     let nombre = document.getElementById('nombre').value;
     let apellidoPaterno = document.getElementById('apellidoPaterno').value;
     let apellidoMaterno = document.getElementById('apellidoMaterno').value;
@@ -36,6 +35,10 @@ function validateForm() {
         alert('La fecha de ingreso debe ser YYYY-MM-DD.');
         return false;
     }
+    if (!isDateAfterMinDate(fechaIngreso, '1946-01-01')) {
+        alert('La fecha de ingreso no puede ser menor a 1946-01-01.');
+        return false;
+    }
 
     return true;
 }
@@ -51,4 +54,11 @@ function isValidDate(dateString) {
 
     return date.toISOString().startsWith(dateString);
 }
+
+function isDateAfterMinDate(dateString, minDateString) {
+    const date = new Date(dateString);
+    const minDate = new Date(minDateString);
+    return date >= minDate;
+}
+
 
