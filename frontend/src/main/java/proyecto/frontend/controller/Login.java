@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class Login {
 
+        //http://localhost:8081/api/Login
         @GetMapping("/Login")
         public String showLoginForm() {
             return "Login/Login"; // Devuelve la vista de login
