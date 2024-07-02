@@ -31,19 +31,6 @@ public class registroController{
     public String paginaregistros(Model model){
         List<registroDTO> registros = registroService.findAllREST();
         model.addAttribute("registros", registros);
-        registroDTO registro = new registroDTO();
-        registro.setRecibeBono("");
-        registro.setPorcentaje("");
-        registro.setMontoBono(0.0);
-        registro.setEstado("");
-
-        empleadoDTO empleado = empleadoService.findByIdREST(3L);
-        proyectoDTO proyecto = proyectoService.findByIdREST(7L);
-        registro.setEmpleado(empleado);
-        registro.setProyecto(proyecto);
-
-        registroDTO RegistroAMostrar = registroService.CalcularBonoREST(registro);
-        model.addAttribute("Bonos",RegistroAMostrar);
 
         return "registros/RegistrosIndex";
     }
