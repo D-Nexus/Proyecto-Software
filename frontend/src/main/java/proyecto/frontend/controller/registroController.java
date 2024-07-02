@@ -32,7 +32,20 @@ public class registroController{
         List<registroDTO> registros = registroService.findAllREST();
         model.addAttribute("registros", registros);
 
+        List<empleadoDTO> empleados = empleadoService.findAllREST();
+        model.addAttribute("empleados", empleados);
+
+        List<proyectoDTO> proyectos = proyectoService.findAllREST();
+        model.addAttribute("proyectos", proyectos);
         return "registros/RegistrosIndex";
+    }
+
+    @PostMapping("/CreateRegistro")
+    public String CreateREST(@ModelAttribute registroDTO registro,Model model) {
+        registro.setEmpleado(empleadoService.findByIdREST(registro.getEmpleado().getId()));
+        registro.setProyecto(proyectoService.findByIdREST(registro.getProyecto().getId()));
+        registroService.CalcularBonoREST(registro);
+        return "redirect:/api/registros/Pagina";
     }
 
 
